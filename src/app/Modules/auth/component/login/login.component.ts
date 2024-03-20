@@ -14,8 +14,6 @@ export class LoginComponent implements OnInit {
     email:new FormControl(null,[Validators.required,Validators.email]),
     password:new FormControl(null,[Validators.required,Validators.pattern('^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)[A-Za-z\\d!$%@#£€*?&]{5,12}$')])
   })
-  
-  
   onSubmit(data:FormGroup){
   console.log(data)
   this._AuthService.userLogin(data.value).subscribe(
