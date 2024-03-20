@@ -1,0 +1,16 @@
+.header-home{
+    background-image: url(../../../../../assets/images/home-bg.svg);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-radius: 15px;
+    padding: 20px;
+    span{
+        color: rgba(239, 155, 40, 1);;
+    }
+    p{
+        color: white;
+        font-size: 30px;
+    }
+
+}
