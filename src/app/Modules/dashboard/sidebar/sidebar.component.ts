@@ -16,14 +16,13 @@ export class SidebarComponent {
   constructor(private _AuthService: AuthService, private _Router:Router) {}
   isManager(): boolean {
     console.log(this._AuthService.role);
-    return this._AuthService.role == 'manager'? true : false;
+    return this._AuthService.role == 'Manager'? true : false;
   
   }
 
   isEmployee(): boolean {
-   
     console.log(this._AuthService.role);
-    return this._AuthService.role == 'employee'? true : false
+    return this._AuthService.role == 'Employee'? true : false
     
   }
 
@@ -32,25 +31,25 @@ export class SidebarComponent {
       text: 'Home',
       link: '/dashboard/home',
       icon: 'fa-solid fa-house',
-      isActive: true
+      isActive: this.isManager()||this.isEmployee()
     },
     {
       text: 'Tasks',
       link: '/dashboard/manager/tasks',
       icon: 'fa-solid fa-list-check',
-      isActive: true
+      isActive: this.isManager()
     },
     {
       text: 'Projects',
       link: '/dashboard/manager/projects',
       icon: 'fa-solid fa-bars-progress',
-      isActive: true
+      isActive:this.isManager()
     },
     {
       text: 'Users',
       link: '/dashboard/manager/users',
       icon: 'fa-solid fa-users',
-      isActive: true
+      isActive: this.isManager()
     },
   ]
 }

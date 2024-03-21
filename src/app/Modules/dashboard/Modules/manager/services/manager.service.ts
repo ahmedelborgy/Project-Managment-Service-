@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 export class ManagerService {
 
   constructor(private _HttpClient:HttpClient) {}
-  getUsers():Observable<any>{
-    return this._HttpClient.get('Users/') 
+  getUsers(params:any):Observable<any>{
+    return this._HttpClient.get('Users/',{params}) 
   }
 }

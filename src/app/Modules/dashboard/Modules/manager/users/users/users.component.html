@@ -12,7 +12,7 @@
             <th class="col">PhoneNumber</th>
             <th class="col">Email</th>
             <th class="col">Date created</th>
-            <th class="col">Action</th>
+            <th class="col"></th>
         </tr>
     </thead>
     <tbody>
@@ -40,3 +40,10 @@
 
 </table>
 </div>
+<mat-paginator [length]="length"
+[pageSize]="pageSize"
+[pageIndex]="pageIndex"
+[pageSizeOptions]="pageSizeOptions"
+(page)="handlePageEvent($event)"
+aria-label="Select page">
+</mat-paginator>
