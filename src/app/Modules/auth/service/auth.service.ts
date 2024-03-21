@@ -25,7 +25,7 @@ export class AuthService {
   getRole(){
     if(localStorage.getItem('userToken')!==null&&(localStorage.getItem('userRole')!==null)){
      this.role=localStorage.getItem('userRole')
-    //console.log(this.role);
+    console.log(this.role);
     }
   }
   userLogin(data:any):Observable<any>{

@@ -8,6 +8,6 @@ export class ManagerService {
 
   constructor(private _HttpClient:HttpClient) {}
   getUsers():Observable<any>{
-    return this._HttpClient.get('Users/currentUser') 
+    return this._HttpClient.get('Users/') 
   }
 }

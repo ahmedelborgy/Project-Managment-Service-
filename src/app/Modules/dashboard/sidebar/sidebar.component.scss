@@ -1,20 +1,18 @@
 section{
-    background-color: #0E382F;
-    width: 200px;
-        ul{
-    
+    width: 220px;
+   background-color:#0E382F;
+    ul{
+        padding: 10px;
+        li{
             padding: 10px;
-            li{
-                padding: 10px;
-                list-style: none;
-                font-family:'Times New Roman', Times, serif;
-                font-size: 17px;
-                a{
-                    text-decoration: none;
-                   span{
-                    margin: 0 6px;
-                   }
-                }
+            list-style: none;
+          
+            a{
+                text-decoration: none;
+               span{
+                margin: 0 6px;
+               }
             }
         }
     }
+}

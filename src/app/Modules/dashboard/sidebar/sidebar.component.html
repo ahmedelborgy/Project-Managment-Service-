@@ -1,14 +1,15 @@
 <section class="vh-100">
-    <div class="">
-        <ul class="">
-           <ng-container *ngFor="let item of Menu">
-            <li *ngIf="item.isActive">
+    <div>
+       
+        <ul>
+            <ng-container *ngFor="let item of Menu">
+             <li *ngIf="item.isActive">
             <a [routerLink]="[item.link]" class="text-white">
-                <span><i [class]="item.icon"></i></span>
+                <span><i [class]=item.icon></i></span>
                 <span>{{item.text}}</span>
             </a>
-            </li>
-           </ng-container>
+           </li>
+        </ng-container>
         </ul>
     </div>
 </section>

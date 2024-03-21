@@ -1,10 +1,10 @@
 <section>
-    <div class="title shadow px-5">
+    <div class="title shadow-sm px-5 p-3 mt-4">
         <h3>Users</h3>
     </div>
 </section>
 <div class="usersTable">
-<table class="table">
+<table class="table mt-4 shadow p-3 mb-5 bg-body-tertiary rounded-3">
     <thead>
         <tr>
             <th class="col">UserName</th>
@@ -22,6 +22,19 @@
             <td>{{item.phoneNumber}}</td>
             <td>{{item.email}}</td>
             <td>{{item.creationDate |date:'MMM d, y, h:mm:ss a'}}</td>
+            <td><button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <mat-menu #menu="matMenu">
+                <button mat-menu-item>
+                    <i class="fa-solid fa-ban p-1"></i>
+                  <span>Block</span>
+                </button>
+                <button mat-menu-item>
+                    <i class="fa-regular fa-eye p-1"></i>
+                  <span>View</span>
+                </button>
+              </mat-menu></td>
         </tr>
     </tbody>
 

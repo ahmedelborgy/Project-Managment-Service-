@@ -15,12 +15,9 @@ export class UsersComponent implements OnInit {
 getAllUsers(){
   this._ManagerService.getUsers().subscribe({
     next:(res)=>{
-      debugger
       console.log(res)
       this.tableUsers=res;
       this.Users=res.data
-      console.log(this.tableUsers)
-    
     },
     error:(err)=>{
       console.log(err)

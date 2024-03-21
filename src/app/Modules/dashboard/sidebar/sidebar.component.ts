@@ -17,11 +17,14 @@ export class SidebarComponent {
   isManager(): boolean {
     console.log(this._AuthService.role);
     return this._AuthService.role == 'manager'? true : false;
+  
   }
 
   isEmployee(): boolean {
+   
     console.log(this._AuthService.role);
-    return this._AuthService.role == 'employee'? true : false;
+    return this._AuthService.role == 'employee'? true : false
+    
   }
 
   Menu: Menu[] = [
