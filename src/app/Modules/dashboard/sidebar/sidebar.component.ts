@@ -31,5 +31,11 @@ export class SidebarComponent {
       icon: 'fa-solid fa-house',
       isActive: this.isManager()||this.isEmployee()
     },
+    {
+      text: 'Users',
+      link: '/dashboard/home',
+      icon: 'fa-solid fa-house',
+      isActive: this.isManager()||this.isEmployee()
+    },
   ]
 }
