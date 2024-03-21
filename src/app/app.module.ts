@@ -5,28 +5,25 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { GlobalInterceptor } from './core/interCeptores/global.interceptor';
+import { GlobalInterceptor } from './core/interceptores/global.interceptor';
 import { SharedModule } from './Modules/shared/shared.module';
 
-
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-   SharedModule
+    SharedModule,
   ],
 
   providers: [
-  {
-    provide:HTTP_INTERCEPTORS,
-    useClass:GlobalInterceptor,
-    multi:true
-  }
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: GlobalInterceptor,
+      multi: true,
+    },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

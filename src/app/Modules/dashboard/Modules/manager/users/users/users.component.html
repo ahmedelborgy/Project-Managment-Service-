@@ -1,1 +1,29 @@
-<p>users works!</p>
+<section>
+    <div class="title shadow px-5">
+        <h3>Users</h3>
+    </div>
+</section>
+<div class="usersTable">
+<table class="table">
+    <thead>
+        <tr>
+            <th class="col">UserName</th>
+            <th class="col">Status</th>
+            <th class="col">PhoneNumber</th>
+            <th class="col">Email</th>
+            <th class="col">Date created</th>
+            <th class="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of Users">
+            <td>{{item.userName}}</td>
+            <td>{{item.isActivated}}</td>
+            <td>{{item.phoneNumber}}</td>
+            <td>{{item.email}}</td>
+            <td>{{item.creationDate |date:'MMM d, y, h:mm:ss a'}}</td>
+        </tr>
+    </tbody>
+
+</table>
+</div>
