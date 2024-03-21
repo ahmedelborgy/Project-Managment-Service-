@@ -7,11 +7,11 @@ const routes: Routes = [
   
   {path:'',redirectTo:'auth',pathMatch:'full'},
   
-  { path: 'dashboard', loadChildren: () => import('./Modules/dashboard/dashboard.module').then(m => m.DashboardModule) },
+  { path: 'dashboard',canActivate:[AuthGuard], loadChildren: () => import('./Modules/dashboard/dashboard.module').then(m => m.DashboardModule) },
 
   
   
-  { path: 'auth',canActivate:[AuthGuard], loadChildren: () => import('./Modules/auth/auth.module').then(m => m.AuthModule) }
+  { path: 'auth', loadChildren: () => import('./Modules/auth/auth.module').then(m => m.AuthModule) }
   
   
   
