@@ -29,13 +29,25 @@ export class SidebarComponent {
       text: 'Home',
       link: '/dashboard/home',
       icon: 'fa-solid fa-house',
-      isActive: this.isManager()||this.isEmployee()
+      isActive: true
+    },
+    {
+      text: 'Tasks',
+      link: '/dashboard/manager/tasks',
+      icon: 'fa-solid fa-list-check',
+      isActive: true
+    },
+    {
+      text: 'Projects',
+      link: '/dashboard/manager/projects',
+      icon: 'fa-solid fa-bars-progress',
+      isActive: true
     },
     {
       text: 'Users',
-      link: '/dashboard/home',
-      icon: 'fa-solid fa-house',
-      isActive: this.isManager()||this.isEmployee()
+      link: '/dashboard/manager/users',
+      icon: 'fa-solid fa-users',
+      isActive: true
     },
   ]
 }

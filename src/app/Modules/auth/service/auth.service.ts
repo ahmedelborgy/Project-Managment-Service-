@@ -8,7 +8,7 @@ import { jwtDecode } from 'jwt-decode';
 })
 export class AuthService {
   role:string|any='';
-  constructor(private _HttpClient:HttpClient, ) {  
+  constructor(private _HttpClient:HttpClient) {  
     if(localStorage.getItem('userToken')!==null){
     this.getProfile()
    }}
