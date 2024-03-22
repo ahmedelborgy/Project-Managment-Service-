@@ -5,7 +5,9 @@
             <ng-container *ngFor="let item of Menu">
                 
              <li *ngIf="item.isActive">
-            <a [routerLink]="[item.link]" class="text-white">
+            <a [routerLink]="[item.link]" 
+            routerLinkActive="bg-main-transparent"
+            class="text-white">
                 <span><i [class]=item.icon></i></span>
                 <span>{{item.text}}</span>
             </a>
