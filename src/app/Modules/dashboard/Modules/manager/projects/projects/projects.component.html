@@ -1,5 +1,50 @@
 <section>
-    <div class="title shadow-sm px-5 p-3 mt-4">
+    <div class="title shadow-sm px-5 p-3 mt-4 d-flex justify-content-between">
         <h3>Projects</h3>
+        <button class="main"><i class="fa-solid fa-plus text-white p-1"></i>Add new Project</button>
     </div>
 </section>
+<div class="projectsTable">
+    <table class="table mt-4 shadow p-3 mb-5 bg-body-tertiary rounded-3">
+        <thead>
+            <tr>
+                <th class="col">Name</th>
+                <th class="col">Title</th>
+                <th class="col">Description</th>
+                <th class="col">modification Data</th>
+                <th class="col">Num Task</th>
+                <th class="col">Date created</th>
+                <th class="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of projects">
+                <td>{{item.title}}</td>
+                <td>{{item.description}}</td>
+                <td>{{item.modificationDate|date:'MMM d, y, h:mm:ss a'}}</td>
+                <td>{{item.id}}</td>
+                <td>{{item.creationDate|date:'MMM d, y, h:mm:ss a'}}</td>
+                <td><button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                    <mat-icon>more_vert</mat-icon>
+                  </button>
+                  <mat-menu #menu="matMenu">
+                    <button mat-menu-item>
+                        <i class="fa-regular fa-pen-to-square p-1"></i>
+                      <span>Edit</span>
+                    </button>
+                    <button mat-menu-item>
+                        <i class="fa-regular fa-eye p-1"></i>
+                      <span>View</span>
+                    </button>
+                    <button mat-menu-item>
+                        <i class="fa-solid fa-trash p-1"></i>
+                      <span>Delete</span>
+                    </button>
+                  </mat-menu></td>
+            </tr>
+        </tbody>
+    
+    </table>
+    </div>
+
+    

@@ -10,4 +10,7 @@ export class ManagerService {
   getUsers(params:any):Observable<any>{
     return this._HttpClient.get('Users/',{params}) 
   }
+  getAllProjects():Observable<any>{
+    return this._HttpClient.get('Project/')
+  }
 }

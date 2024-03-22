@@ -10,7 +10,7 @@ const routes: Routes = [
     component: DashboardComponent,
     children: [
       {
-        path: 'Employee',
+        path: 'Employe',
         canActivate:[EmployeeGuard],
         loadChildren: () =>
           import('./Modules/employe/employe.module').then(

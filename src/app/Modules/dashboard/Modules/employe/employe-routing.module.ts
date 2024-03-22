@@ -2,7 +2,16 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { EmployeComponent } from './employe.component';
 
-const routes: Routes = [{ path: '', component: EmployeComponent }];
+const routes: Routes = [{ path: '', component: EmployeComponent },
+{
+  path: '',
+  loadChildren: () => import('../employe/projects/projects.module').then(m =>m.ProjectsModule)
+}, 
+{
+  path: '',
+  loadChildren: () => import('../employe/tasks/tasks.module').then(m =>m.TasksModule)
+}, 
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

@@ -51,5 +51,17 @@ export class SidebarComponent {
       icon: 'fa-solid fa-users',
       isActive: this.isManager()
     },
+    {
+      text: 'Projects',
+      link: '/dashboard/employe/projects-user',
+      icon: 'fa-solid fa-bars-progress',
+      isActive: this.isEmployee()
+    },
+    {
+      text: 'Tasks',
+      link: '/dashboard/employe/tasks-user',
+      icon: 'fa-solid fa-list-check',
+      isActive: this.isEmployee()
+    },
   ]
 }

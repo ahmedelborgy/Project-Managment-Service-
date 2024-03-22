@@ -1,17 +1,23 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { jwtDecode } from 'jwt-decode';
-
+import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
+export class AuthService implements OnInit {
+ 
   role:string|any='';
-  constructor(private _HttpClient:HttpClient) {  
-    if(localStorage.getItem('userToken')!==null){
-    this.getProfile()
-   }}
+  constructor(private _HttpClient:HttpClient, private _Router:Router){
+     
+      if(localStorage.getItem('userToken')!==null){
+      this.getProfile()
+     }
+  }
+  ngOnInit(): void {
+    
+  }
  
   //token= localStorage.getItem('userToken');
   getProfile(){
@@ -31,4 +37,11 @@ export class AuthService {
   userLogin(data:any):Observable<any>{
     return this._HttpClient.post('Users/Login',data)
    }
+   logOut(){
+    /* localStorage.removeItem('userName');
+     localStorage.removeItem('userRole');
+     localStorage.removeItem('userToken');*/
+     this._Router.navigateByUrl('/auth/login')
+     localStorage.clear()
+}
 }
