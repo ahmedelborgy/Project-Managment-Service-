@@ -37,3 +37,16 @@ $Managment-System-theme: mat.define-light-theme((
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.main{
+  background-color: #EF9B28;
+  color:white;
+  border-radius:32px !important;
+  border:#EF9B28;
+  padding: 10px 10px;
+  
+
+}
+.bg-header{
+  background-color: #fff; 
+}

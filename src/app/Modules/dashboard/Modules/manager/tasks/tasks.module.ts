@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { TasksRoutingModule } from './tasks-routing.module';
 import { TasksComponent } from './tasks/tasks.component';
+import { SharedModule } from 'src/app/Modules/shared/shared.module';
 
 
 @NgModule({
@@ -11,7 +12,7 @@ import { TasksComponent } from './tasks/tasks.component';
   ],
   imports: [
     CommonModule,
-    TasksRoutingModule
+    TasksRoutingModule,SharedModule
   ]
 })
 export class TasksModule { }
