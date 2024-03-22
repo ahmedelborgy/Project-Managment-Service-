@@ -29,7 +29,7 @@ export class SidebarComponent {
   Menu: Menu[] = [
     {
       text: 'Home',
-      link: '/dashboard/home',
+      link: '/dashboard/manager/home',
       icon: 'fa-solid fa-house',
       isActive: this.isManager()||this.isEmployee()
     },

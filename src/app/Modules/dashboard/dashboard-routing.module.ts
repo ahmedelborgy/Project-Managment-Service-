@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard.component';
 import { ManagerGuard } from '../guards/manager.guard';
 import { EmployeeGuard } from '../guards/employee.guard';
+import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes = [
   {
