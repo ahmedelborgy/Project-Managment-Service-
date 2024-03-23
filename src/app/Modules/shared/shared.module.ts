@@ -8,12 +8,16 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatPaginatorModule} from '@angular/material/paginator';
-
+import {MatDialogModule} from '@angular/material/dialog';
 @NgModule({
   declarations: [
     HeaderComponent
   ],
   imports: [
+   
+
+    MatDialogModule,
+
     CommonModule,
     HttpClientModule,
     MatIconModule,
@@ -24,6 +28,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MatPaginatorModule
   ],
   exports: [HttpClientModule,
+    MatDialogModule,
     MatIconModule,
     MatInputModule,
     MatMenuModule,

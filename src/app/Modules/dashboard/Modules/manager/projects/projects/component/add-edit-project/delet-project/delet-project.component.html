@@ -1,0 +1,12 @@
+
+
+<section class="bg-white p-5" >
+    <h2 class="text-danger py-3 px-5" mat-dialog-title >
+        Delete {{data.isData.title}}</h2>
+
+        <div class="d-flex justify-content-between  w-100 px-4">
+            <button class="bg-danger text-white" mat-button mat-dialog-close>No</button>
+            <button class="  text-white bg-success" mat-button [mat-dialog-close]="data.isData.id" kFocusInitial>Ok</button>
+        </div>
+    
+</section>
