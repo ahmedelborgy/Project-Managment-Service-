@@ -8,7 +8,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatPaginatorModule} from '@angular/material/paginator';
-
+import {MatDialogModule} from '@angular/material/dialog';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     HeaderComponent
@@ -21,7 +22,10 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MatFormFieldModule,MatButtonModule,
     MatMenuModule,
     MatButtonModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatDialogModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [HttpClientModule,
     MatIconModule,
@@ -29,6 +33,10 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MatMenuModule,
     MatButtonModule,
     MatPaginatorModule,
-    MatFormFieldModule,MatButtonModule]
+    MatDialogModule,
+    MatFormFieldModule,MatButtonModule,
+    FormsModule,
+    ReactiveFormsModule
+]
 })
 export class SharedModule { }

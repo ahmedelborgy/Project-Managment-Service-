@@ -1,0 +1,14 @@
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="text-center">
+                <i class="fa-solid fa-ban p-1 text-danger fa-beat fa-5x py-3"></i>
+               <p>Are you sure {{data.isActivated?'Block':'unBlock'}} this user <span class="fw-bold">{{data.userName}}</span></p>
+            </div>
+            <div class="d-flex justify-content-between py-3"> 
+                <button  class="w-25 second " (click)="onNoClick()">Cancel</button>
+                <button class="w-25 main" [mat-dialog-close]="data.id">{{data.isActivated?'Block':'unBlock'}}</button>
+            </div>
+        </div>
+    </div>
+</section>

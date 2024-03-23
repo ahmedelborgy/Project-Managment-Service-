@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ManagerService } from '../../services/manager.service';
 import { Router } from '@angular/router';
+import { ProjectService } from './service/project.service';
 @Component({
   selector: 'app-projects',
   templateUrl: './projects.component.html',
@@ -9,12 +9,12 @@ import { Router } from '@angular/router';
 export class ProjectsComponent implements OnInit {
   tableProject:any;
   projects:any[]=[]
-  constructor(private _ManagerService:ManagerService, private _Router:Router){}
+  constructor(private _ProjectService:ProjectService, private _Router:Router){}
   ngOnInit(): void {
     this.getProjects()
   }
 getProjects(){
-  this._ManagerService.getAllProjects().subscribe({
+  this._ProjectService.getAllProjects().subscribe({
     next:(res)=>{
       console.log(res)
       this.tableProject=res;

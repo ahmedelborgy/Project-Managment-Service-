@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ManagerService } from '../../services/manager.service';
 import { PageEvent } from '@angular/material/paginator';
+import { UserService } from '../../service/user.service';
+import { ConfirmUserComponent } from '../confirm-user/confirm-user/confirm-user.component';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
@@ -15,7 +17,8 @@ export class UsersComponent implements OnInit {
   pageNumber=1;
   pageSizeOptions=[5,10,20];
   pageEvent:PageEvent|any;
-  constructor(private _ManagerService:ManagerService){}
+  searchKey:string='';
+  constructor(public dialog: MatDialog,private _UserService:UserService){}
   ngOnInit(): void {
     this.getAllUsers()
   }
@@ -23,8 +26,9 @@ getAllUsers(){
   let params={
     pageSize:this.pageSize,
     pageNumber:this.pageNumber,
+    userName:this.searchKey
   }
-  this._ManagerService.getUsers(params).subscribe({
+  this._UserService.getUsers(params).subscribe({
     next:(res)=>{
       console.log(res)
       this.tableUsers=res;
@@ -37,6 +41,32 @@ getAllUsers(){
       //tostar
     }
   })
+}
+openDialog(dataItem:any) {
+  const dialogRef = this.dialog.open(ConfirmUserComponent, {
+    data:dataItem
+  });
+  dialogRef.afterClosed().subscribe(result => {
+    console.log(`Dialog result: ${result}`);
+    if(result){
+      this.onToggleBlockUser(result)
+    }
+}
+  )
+}
+onToggleBlockUser(id:number){
+this._UserService.onToggleActivaUser(id).subscribe({
+  next:(res)=>{
+    console.log(res)
+  },
+  error:(err)=>{
+    console.log(err)
+  },
+  complete:()=>{
+    this.getAllUsers()
+  }
+})
+
 }
 handlePageEvent(e: PageEvent) {
   this.pageEvent = e;
