@@ -52,12 +52,9 @@ import { ToastrModule} from 'ngx-toastr';
     MatFormFieldModule,MatButtonModule,
     FormsModule,
     ReactiveFormsModule,
-<<<<<<< HEAD
-    MatSelectModule
-=======
+    MatSelectModule,
     NgxDropzoneModule,
-    ToastrModule
->>>>>>> 1fa538fe6724b251c9d6fc1d18b12ea27f6612a3
+    ToastrModule,
 ]
 })
 export class SharedModule { }
