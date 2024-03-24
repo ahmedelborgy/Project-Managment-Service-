@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService implements OnInit {
+export class AuthService  {
  
   role:string|any='';
   constructor(private _HttpClient:HttpClient, private _Router:Router){
@@ -14,9 +14,6 @@ export class AuthService implements OnInit {
       if(localStorage.getItem('userToken')!==null){
       this.getProfile()
      }
-  }
-  ngOnInit(): void {
-    
   }
  
   //token= localStorage.getItem('userToken');
@@ -36,6 +33,18 @@ export class AuthService implements OnInit {
   }
   userLogin(data:any):Observable<any>{
     return this._HttpClient.post('Users/Login',data)
+   }
+   userRegister(data:any):Observable<any>{
+    return this._HttpClient.post('Users/Register',data)
+   }
+   verifyUser(data:any):Observable<any>{
+    return this._HttpClient.put('Users/verify',data)
+   }
+   forgetPassword(data:any):Observable<any>{
+    return this._HttpClient.post('Users/Reset/Request',data)
+   }
+   resetPassword(data:any):Observable<any>{
+    return this._HttpClient.post('Users/Reset',data)
    }
    logOut(){
     /* localStorage.removeItem('userName');
