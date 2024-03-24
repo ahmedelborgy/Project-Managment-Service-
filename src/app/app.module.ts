@@ -5,8 +5,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { GlobalInterceptor } from './core/interceptores/global.interceptor';
+
 import { SharedModule } from './Modules/shared/shared.module';
+import { LoadingInterceptor } from './core/loading.interceptor';
+import { GlobalInterceptor } from './core/interCeptores/global.interceptor';
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,6 +24,11 @@ import { SharedModule } from './Modules/shared/shared.module';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: GlobalInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass:LoadingInterceptor,
       multi: true,
     },
   ],
