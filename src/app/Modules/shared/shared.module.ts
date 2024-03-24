@@ -15,7 +15,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import { ToastrModule} from 'ngx-toastr';
 import { DeleteComponent } from './delete/delete.component';
-
+import { NgxSpinnerModule } from "ngx-spinner";
 @NgModule({
   declarations: [
     HeaderComponent,
@@ -24,6 +24,7 @@ import { DeleteComponent } from './delete/delete.component';
   imports:[
     CommonModule,
     HttpClientModule,
+    NgxSpinnerModule ,
     MatIconModule,
     MatInputModule,
     MatFormFieldModule,MatButtonModule,
@@ -41,6 +42,7 @@ import { DeleteComponent } from './delete/delete.component';
     })
   ],
   exports: [HttpClientModule,
+    NgxSpinnerModule ,
     MatIconModule,
     MatInputModule,
     MatMenuModule,
