@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { PageEvent } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteComponent } from 'src/app/Modules/shared/delete/delete.component';
+import { CardTaskComponent } from '../card-task/card-task.component';
 
 @Component({
   selector: 'app-tasks',
@@ -48,7 +49,7 @@ export class TasksComponent {
     this.pageIndex = e.pageIndex;
     this.getManagerTasks();
   }
-  openDeleteTaskDialog(taskData:number) {
+  openDeleteTaskDialog(taskData:any) {
     console.log(taskData);
 
     const dialogRef = this._Dialog.open(DeleteComponent, {
@@ -64,9 +65,37 @@ export class TasksComponent {
       }
     });
   }
-  
+
+  openViewTaskDialog(taskData:any) {
+    console.log(taskData);
+
+    const dialogRef = this._Dialog.open(CardTaskComponent, {
+      data: taskData,
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('The dialog was closed');
+      console.log(result);
+      //  let x = {name:result}
+      if (result) {
+        this.getTaskById(result);
+      }
+    });
+  }
+  getTaskById(taskId: any) {
+    this._TasksService.onGetTaskById(taskId).subscribe({
+      next:(res) => {
+          console.log(res);
+          
+      }
+
+    }
+     
+    )
+    
+  }
   deleteTask(taskId: any) {
-    this._TasksService.onDeleteTask(taskId).subscribe({
+    this._TasksService.onGetTaskById(taskId).subscribe({
       next: (res) => {
         console.log(res);
       //  this.toastr.success('Category', ' deleted Category Success');
@@ -80,4 +109,6 @@ export class TasksComponent {
       },
     });
   }
+
+ 
 }

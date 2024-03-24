@@ -19,4 +19,8 @@ export class TasksService {
     return this._HttpClient.delete(`Task/${id}`)
     
   }
+  onGetTaskById(id:number): Observable<any>{
+    return this._HttpClient.get(`Task/${id}`)
+    
+  }
 }
