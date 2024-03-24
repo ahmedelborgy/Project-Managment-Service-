@@ -16,7 +16,7 @@ const routes: Routes = [
   loadChildren: () => import('../manager/projects/projects.module').then(m =>m.ProjectsModule)
 },
 {
-  path: '',
+  path: 'tasks',
   loadChildren: () => import('../manager/tasks/tasks.module').then(m =>m.TasksModule)
 },
 ];

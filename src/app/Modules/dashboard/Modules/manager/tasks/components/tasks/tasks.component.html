@@ -1,12 +1,18 @@
 
 <section>
-    <div class="title shadow-sm px-5 bg-header p-3 d-flex justify-content-between">
-        <h3>Tasks</h3>
-        <button class="main px-3"><i class="fa-solid fa-plus text-white p-1"></i>Add new Task</button>
+    <div
+    class="title shadow-sm px-5 bg-header py-4 d-flex justify-content-between"
+  >
+    <h3>Tasks</h3>
+    <button routerLink="add" class="main w-25 px-3">
+      <i class="fa-solid fa-plus text-white p-1"></i>Add new Task
+    </button>
+  </div>
+<div class="tasksTable mt-5 mx-5 rounded  bg-white shadow">
+    <div>
+        <input type="text">
     </div>
-
-<div class="tasksTable">
-    <table class="table mt-4 shadow p-3 mb-5 bg-body-tertiary rounded-3">
+    <table class="table mt-4   mb-5 bg-body-tertiary ">
         <thead>
             <tr>
                 <th >Title</th>
@@ -35,30 +41,35 @@
                 <td><button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
                     <mat-icon>more_vert</mat-icon>
                   </button>
-                  <mat-menu #menu="matMenu">
-                    <button mat-menu-item>
-                        <i class="fa-regular fa-pen-to-square p-1"></i>
-                      <span>Edit</span>
+                  <mat-menu #menu="matMenu" >
+                    <button mat-menu-item >
+                        <i class="fa-regular fa-pen-to-square  icon-color "></i>
+                      <span class="ps-3  ">Edit</span>
+                    </button>
+                    <button mat-menu-item >
+                        <i class="fa-regular fa-eye  icon-color"></i>
+                      <span class="ps-3 ">View</span>
                     </button>
                     <button mat-menu-item>
-                        <i class="fa-regular fa-eye p-1"></i>
-                      <span>View</span>
-                    </button>
-                    <button mat-menu-item>
-                        <i class="fa-solid fa-trash p-1"></i>
-                      <span>Delete</span>
+                        <i class="fa-solid fa-trash  icon-color "></i>
+                      <span class="ps-3" (click)="openDeleteTaskDialog(item)">Delete</span>
                     </button>
                   </mat-menu></td>
             </tr>
         </tbody>
     
     </table>
+    <hr>
+    <div class="my-3 p-2">
+        <mat-paginator  [length]="length"
+        [pageSize]="pageSize"
+        [pageIndex]="pageIndex"
+        [pageSizeOptions]="pageSizeOptions"
+        (page)="handlePageEvent($event)"
+        aria-label="Select page">
+        </mat-paginator>
     </div>
-    <mat-paginator [length]="length"
-    [pageSize]="pageSize"
-    [pageIndex]="pageIndex"
-    [pageSizeOptions]="pageSizeOptions"
-    (page)="handlePageEvent($event)"
-    aria-label="Select page">
-    </mat-paginator>
+
+    </div>
+
 </section>

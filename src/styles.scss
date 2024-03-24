@@ -38,15 +38,41 @@ $Managment-System-theme: mat.define-light-theme((
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-.main{
-  background-color: #EF9B28;
-  color:white;
-  border-radius:32px !important;
+button{
+
   border:#EF9B28;
-  padding: 10px 10px;
-  
+  // padding: 10px 10px;
+  padding: 0.7rem 45px !important;
+  border-radius:32px !important;
+  text-align: center;
+  font-size: 25px;
+  transition: all 1s;
+  &.main{
+    background-color: #EF9B28;
+    color:white;
+
+    &:hover{opacity: 0.7;}
+
+
+  }
+
+
+  &.main-outline{
+    border:1px solid #0E382F;
+    color: #0E382F;
+   background-color: white;
+    &:hover{opacity: 0.7;}
+  }
+
+
 
 }
+
 .bg-header{
   background-color: #fff; 
+}
+.card-form{
+  border-radius: 16px;
+  background-color: white;
+  padding: 2rem 1rem;
 }

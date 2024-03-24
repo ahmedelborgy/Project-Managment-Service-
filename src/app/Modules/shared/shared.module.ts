@@ -10,17 +10,18 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatDialogModule} from '@angular/material/dialog';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-<<<<<<< HEAD
 import { MatSelectModule } from '@angular/material/select';
-=======
+
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import { ToastrModule} from 'ngx-toastr';
->>>>>>> 1fa538fe6724b251c9d6fc1d18b12ea27f6612a3
+import { DeleteComponent } from './delete/delete.component';
+
 @NgModule({
   declarations: [
-    HeaderComponent
+    HeaderComponent,
+    DeleteComponent
   ],
-  imports: [
+  imports:[
     CommonModule,
     HttpClientModule,
     MatIconModule,
@@ -32,15 +33,12 @@ import { ToastrModule} from 'ngx-toastr';
     MatDialogModule,
     FormsModule,
     ReactiveFormsModule,
-<<<<<<< HEAD
-    MatSelectModule
-=======
+    MatSelectModule,
     NgxDropzoneModule,
     ToastrModule.forRoot({
-      closeButton:true,
+     closeButton:true,
       
     })
->>>>>>> 1fa538fe6724b251c9d6fc1d18b12ea27f6612a3
   ],
   exports: [HttpClientModule,
     MatIconModule,

@@ -15,4 +15,8 @@ export class TasksService {
     return this._HttpClient.post('Task/',data)
     
   }
+  onDeleteTask(id:number): Observable<any>{
+    return this._HttpClient.delete(`Task/${id}`)
+    
+  }
 }
