@@ -11,6 +11,7 @@ import { DeletProjectComponent } from './component/delet-project/delet-project.c
   templateUrl: './projects.component.html',
   styleUrls: ['./projects.component.scss']
 })
+
 // export class ProjectsComponent implements OnInit {
 //   tableProject:any;
 //   projects:any[]=[]

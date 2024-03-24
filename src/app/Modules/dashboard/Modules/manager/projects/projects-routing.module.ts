@@ -5,7 +5,7 @@ import { AddEditProjectComponent } from './projects/component/add-edit-project/a
 
 const routes: Routes = [
   {path:'projects',component:ProjectsComponent},
-  {path:'{path:add-edit',component:AddEditProjectComponent}
+  {path:'add-edit',component:AddEditProjectComponent}
 ];
 
 @NgModule({
