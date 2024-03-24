@@ -3,7 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { ManagerComponent } from './manager.component';
 import { HomeComponent } from '../../components/home/home.component';
 
-const routes: Routes = [{ path: 'home', component: HomeComponent },
+const routes: Routes = [
+
+  { path: '', component: HomeComponent },
+  { path: 'home', component: HomeComponent },
 {
   path: '',
   loadChildren: () => import('../manager/users/users.module').then(m =>m.UsersModule)

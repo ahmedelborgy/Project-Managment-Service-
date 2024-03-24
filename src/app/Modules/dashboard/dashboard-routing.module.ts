@@ -11,6 +11,11 @@ const routes: Routes = [
     component: DashboardComponent,
     children: [
       {
+        path: '',
+        component: HomeComponent
+      },
+      {path:'home', component:HomeComponent},
+      {
         path: 'Employe',
         canActivate:[EmployeeGuard],
         loadChildren: () =>

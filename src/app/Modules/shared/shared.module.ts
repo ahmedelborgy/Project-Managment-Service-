@@ -10,6 +10,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatDialogModule} from '@angular/material/dialog';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatSelectModule } from '@angular/material/select';
 @NgModule({
   declarations: [
     HeaderComponent
@@ -25,7 +26,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatPaginatorModule,
     MatDialogModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSelectModule
   ],
   exports: [HttpClientModule,
     MatIconModule,
@@ -36,7 +38,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatDialogModule,
     MatFormFieldModule,MatButtonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSelectModule
 ]
 })
 export class SharedModule { }
