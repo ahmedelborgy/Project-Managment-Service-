@@ -37,6 +37,9 @@ export class AuthService implements OnInit {
   userLogin(data:any):Observable<any>{
     return this._HttpClient.post('Users/Login',data)
    }
+   userRegister(data:any):Observable<any>{
+    return this._HttpClient.post('Users/Register',data)
+   }
    logOut(){
     /* localStorage.removeItem('userName');
      localStorage.removeItem('userRole');

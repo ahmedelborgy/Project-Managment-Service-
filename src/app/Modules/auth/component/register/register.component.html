@@ -1,1 +1,100 @@
-<p>register works!</p>
+<div id="register">
+    <div class="register-form py-5">
+        <div class="text-center">
+            <img src="../../../../../assets/images/logo.svg">
+        </div>
+       <div class="px-5">
+        
+        <span>Welcome to PMS</span>
+        <h2>Create New Account</h2>
+        <h2>hi</h2>
+     <form [formGroup]=" registerForm" (ngSubmit)="onSubmit(registerForm)">
+        <div class="row">
+          <div class="col-12">
+           <!-- <ngx-dropzone class="picture" (change)="onSelect($event)">
+              <ngx-dropzone-label>Drop your image</ngx-dropzone-label>
+              <ngx-dropzone-image-preview class="child" ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f">
+                <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+              </ngx-dropzone-image-preview>
+            </ngx-dropzone>-->
+          </div>
+            <div class="col-6">
+            <div class="input-group mb-2 ">
+                <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-user" style="color: #8391A1;"></i></span>
+                <input formControlName="userName" type="text" class="form-control" placeholder="UserName" aria-label="Username" aria-describedby="basic-addon1">
+                <div *ngIf="registerForm.controls['userName'].errors&&registerForm.controls['userName'].touched" class="w-100">
+                  <p class="text-danger" *ngIf="registerForm.controls['userName'].errors['required']">userName is required</p>
+                  <p class="text-danger" *ngIf="registerForm.controls['userName'].errors['userName']">userName should be MaxLength 10</p>
+              </div>
+            </div>
+            </div>
+            <div class="col-6">
+            <div class="input-group mb-2">
+                <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-envelope" style="color: #8391A1;"></i></span>
+                <input formControlName="email" type="text" class="form-control" placeholder="Enter your E-mail" aria-label="Username" aria-describedby="basic-addon1">
+                <div *ngIf="registerForm.controls['email'].errors&&registerForm.controls['email'].touched" class=" w-100">
+                  <p class="text-danger" *ngIf="registerForm.controls['email'].errors['required']">email is required</p>
+                  <p class="text-danger" *ngIf="registerForm.controls['email'].errors['email']">email should be valid mail</p>
+              </div>
+            </div>
+            </div>
+          
+          <div class="col-6">
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-earth-africa" style="color: #8391A1;"></i></span>
+                <input formControlName="country" type="text" class="form-control" placeholder="Country" aria-label="Username" aria-describedby="basic-addon1">
+                <div *ngIf="registerForm.controls['country'].errors&&registerForm.controls['country'].touched" class=" w-100 p-1">
+                  <p class="text-danger" *ngIf="registerForm.controls['country'].errors['required']">Country name is required</p>
+                  
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-mobile-screen" style="color: #8391A1;"></i></span>
+                <input formControlName="phoneNumber" type="text" class="form-control" placeholder="phoneNumber" aria-label="Username" aria-describedby="basic-addon1">
+                <div *ngIf="registerForm.controls['phoneNumber'].errors&&registerForm.controls['phoneNumber'].touched" class=" w-100 p-1">
+                  <p class="text-danger" *ngIf="registerForm.controls['phoneNumber'].errors['required']">phoneNumber is required</p>
+                  
+              </div>
+            </div>
+            
+          </div>
+          <div class="col-6">
+            <div class="input-group mb-3 ">
+              <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-lock" style="color: #8391A1;"></i></span>
+              <input formControlName="password" class="position-relative"  [type]="hiden ? 'password' : 'text'" class="form-control" placeholder="Password" aria-label="Username" aria-describedby="basic-addon1">
+              <a class="show-password" (click)="hiden = !hiden">
+                <i class="fa-solid primary" [class]="hiden ? 'fa-eye-slash' : 'fa-eye'"></i>
+              </a>
+              <div *ngIf="registerForm.controls['password']?.errors && registerForm.controls['password']?.touched" class="w-100 p-1">
+                <p class="text-danger" *ngIf="registerForm.controls['password']?.errors?.['required']">Password is required</p>
+                <p class="text-danger" *ngIf="registerForm.controls['password']?.errors?.['pattern']">Password should start with a capital letter</p>
+              </div>
+              
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="input-group mb-3 ">
+              <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-lock" style="color: #8391A1;"></i></span>
+              <input formControlName="confirmPassword" class="position-relative"  [type]="hide ? 'password' : 'text'" class="form-control" placeholder="Password" aria-label="Username" aria-describedby="basic-addon1">
+              <a class="show-password" (click)="hide = !hide">
+                <i class="fa-solid primary" [class]="hide ? 'fa-eye-slash' : 'fa-eye'"></i>
+              </a>
+              <div *ngIf="registerForm.controls['password']?.errors && registerForm.controls['password']?.touched" class="w-100 p-1">
+                <p class="text-danger" *ngIf="registerForm.controls['password']?.errors?.['required']">Password is required</p>
+                <p class="text-danger" *ngIf="registerForm.controls['password']?.errors?.['pattern']">Password should start with a capital letter</p>
+              </div>
+              
+            </div>
+            </div>
+            <div class="d-flex justify-content-between pb-3">
+                <a [routerLink]="['/auth/login']" class="text-white">Login Now?</a>
+                <a class="text-white">Have code?</a>
+              </div>
+          </div>
+          <button  class="main w-100">Register</button>
+        </form>
+    </div>
+    </div>
+    </div>
