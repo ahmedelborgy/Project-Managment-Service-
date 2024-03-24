@@ -10,6 +10,8 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatDialogModule} from '@angular/material/dialog';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxDropzoneModule } from 'ngx-dropzone';
+import { ToastrModule} from 'ngx-toastr';
 @NgModule({
   declarations: [
     HeaderComponent
@@ -25,7 +27,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatPaginatorModule,
     MatDialogModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxDropzoneModule,
+    ToastrModule.forRoot({
+      closeButton:true,
+      
+    })
   ],
   exports: [HttpClientModule,
     MatIconModule,
@@ -36,7 +43,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatDialogModule,
     MatFormFieldModule,MatButtonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxDropzoneModule,
+    ToastrModule
 ]
 })
 export class SharedModule { }

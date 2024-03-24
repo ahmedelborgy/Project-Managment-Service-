@@ -7,20 +7,25 @@ import { AuthComponent } from './auth.component';
 import { LoginComponent } from './component/login/login.component';
 import { RegisterComponent } from './component/register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { VerifyuserComponent } from './component/verifyAccount/verifyuser.component';
+import { ForgetPasswordComponent } from './component/forget-password/forget-password.component';
+import { ResetPasswordComponent } from './component/reset-password/reset-password.component';
 
 
 @NgModule({
   declarations: [
     AuthComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    VerifyuserComponent,
+    ForgetPasswordComponent,
+    ResetPasswordComponent
   ],
   imports: [
     CommonModule,
     AuthRoutingModule,
     SharedModule,
-    ReactiveFormsModule,
-    FormsModule
+    
   ]
 })
 export class AuthModule { }

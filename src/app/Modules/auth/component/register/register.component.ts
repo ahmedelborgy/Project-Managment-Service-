@@ -2,18 +2,22 @@ import { Component } from '@angular/core';
 import { AuthService } from '../../service/auth.service';
 import { Router } from '@angular/router';
 import { Validators,FormControl,FormGroup } from '@angular/forms';
+import { VerifyuserComponent } from '../verifyAccount/verifyuser.component';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent {
-  constructor(private _AuthService:AuthService, private _Router:Router){}
+  constructor(private _Toastr:ToastrService,public dialog: MatDialog,private _AuthService:AuthService, private _Router:Router){}
   ngOnInit(): void {
     
   }
   hide:boolean=true;
   hiden:boolean=true;
+  imgSrc:any;
   registerForm = new FormGroup({
     userName:new FormControl(null,[Validators.required,Validators.maxLength(10),Validators.minLength(5)]),
     email:new FormControl(null,[Validators.required,Validators.email]),
@@ -39,12 +43,50 @@ export class RegisterComponent {
     },
     error:(err)=>{
       console.log(err)
+      this._Toastr.error('Try again', 'Register not sucess');
     },
     complete:()=>{
-     //toster
+      this._Toastr.success('Success', 'Register sucess');
     }
   })
   
   }
-  
+  files: File[] = [];
+
+ onSelect(event:any) {
+  this.imgSrc=event.addedFiles[0];
+  console.log(this.imgSrc);
+  this.files.push(...event.addedFiles);
+}
+
+ onRemove(event:any) {
+  console.log(event);
+  this.files.splice(this.files.indexOf(event), 1);
+}
+  openDialog(): void {
+    const dialogRef = this.dialog.open(VerifyuserComponent, {
+      data: {},
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed',result);
+      if(result){
+        this.verifyUserAccount(result)
+      }
+    });
+  }
+verifyUserAccount(data:any){
+  this._AuthService.verifyUser(data).subscribe({
+    next:(res)=>{
+      console.log(res)
+    },
+    error:(err)=>{
+      console.log(err)
+      this._Toastr.error('Try again', 'Activated Account not sucess');
+    },complete:()=>{
+      this._Toastr.success('Successfuly', 'Activated Account Successfuly');
+       this._Router.navigateByUrl('/auth/login')
+    }
+  })
+}
 }
