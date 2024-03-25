@@ -18,7 +18,7 @@
 
 <section class="card-form w-75 m-auto mt-5 p-5"  >
     <form  class="" [formGroup]="addProjectForm"
-    (ngSubmit)="addEditProject(addProjectForm)">
+    (ngSubmit)="addProject(addProjectForm)">
 <div class="mb-3 "   >
     <label for="" class="form-label">Title</label>
     <input *ngIf="action=='view'" [attr.disabled]="isInputDisabled ? '' : null"
@@ -58,7 +58,7 @@
 <div class="d-flex justify-content-between mt-5 mt-5 ">
     <button routerLink="/dashboard/manager/projects"
     type="button" class="main px-3 bg-white text-dark border-black border-1 border">Cancel</button>
-    <button  *ngIf="action !='view'" type="submit" class="main px-3">
+    <button  *ngIf="action !='view'" type="submit" class="main px-3 m-1">
        {{action}} Project</button>
 </div>
 
