@@ -1,21 +1,21 @@
-/*import { Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Iproject } from '../../../interfac/iproject';
+import { Iproject } from '../../../interface/iproject';
 
 //import { Iproject } from '../interfac/iproject';
 @Injectable({
   providedIn: 'root'
 })
-export class ManagerService {
+export class ProjectService {
 itemProject:any;
 action:string|any;
   constructor(private _HttpClient:HttpClient) {}
   getUsers(params:any):Observable<any>{
     return this._HttpClient.get('Users/',{params}) 
   }
-  getAllProjects(data:any):Observable<any>{
-    return this._HttpClient.get('Project/',{params:data});
+  getAllProjects(param:any):Observable<any>{
+    return this._HttpClient.get('Project/',{params:param});
    
 
   }
@@ -25,7 +25,7 @@ action:string|any;
   }
   
   editProjects(data:any,id:any):Observable<any>{
-    console.log('---put---',id);
+    //console.log('put',id);
     
     return this._HttpClient.put(`Project/${id}`,data)
   }
@@ -33,11 +33,11 @@ action:string|any;
   return this._HttpClient.delete(`Project/${id}`);
   }
   getItemProject(item:Iproject,action:string){
-console.log(item,action);
-this.itemProject=item;
-this.action=action;
+  console.log(item,action);
+  this.itemProject=item;
+  this.action=action;
   }
-}*/
+}
 //import { Observable } from 'rxjs/internal/Observable';
 
 

@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DeletProjectComponent } from './delet-project.component';
+import { DeletProjectComponent } from './delete-project.component';
 
 describe('DeletProjectComponent', () => {
   let component: DeletProjectComponent;

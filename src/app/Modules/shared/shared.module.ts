@@ -9,10 +9,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatDialogModule} from '@angular/material/dialog';
-
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
-
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import { ToastrModule} from 'ngx-toastr';
 import { DeleteComponent } from './delete/delete.component';
@@ -23,12 +21,7 @@ import { DeleteComponent } from './delete/delete.component';
     HeaderComponent,
     DeleteComponent
   ],
-
- 
-
-
   imports:[
-
     CommonModule,
     HttpClientModule,
     MatIconModule,

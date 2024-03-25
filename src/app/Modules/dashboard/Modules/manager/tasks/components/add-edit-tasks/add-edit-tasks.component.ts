@@ -23,11 +23,7 @@ export class AddEditTasksComponent {
     private _HelperService: HelperService
   ) {}
   ngOnInit(): void {
-    // this.filteredOptions = this.taskForm.valueChanges.pipe(
-    //   startWith(''),
-    //   map(value => this._filter(value || '')),
-  
-    //  );
+   
      this.getListManagerProjects();
      this.getListUsers(); 
   }
@@ -76,7 +72,7 @@ export class AddEditTasksComponent {
       },
       error: () => {},
       complete: () => {
-        //tosre
+        //toster
       },
     });
   }

@@ -1,9 +1,36 @@
-// .main{
-//     background-color: #EF9B28;
-//     color:white;
-//     border-radius:32px !important;
-//     border:#EF9B28;
-//     padding: 10px 10px;
-    
+table{
 
-// }
+    thead{
+        height: 38px !important;
+        background-color: #315951E5 !important;
+    }
+    th{
+        background-color: #315951E5 !important;
+        color:white;
+        border-left: 2px solid #315951E5;
+        border-right: 2px solid #315951E5;
+        text-transform: capitalize;
+        padding: 10px;
+        font-size: 20px;
+    }
+ }
+ .td-style{
+    padding-top: 20px !important;
+ }
+ i{
+    color: #EF9B28;
+ }
+ .main{
+    background-color: #EF9B28;
+    color:white;
+    border-radius:32px !important;
+    border:#EF9B28;
+    padding: 10px 20px;
+}
+.second{
+    background-color:#009247;
+    color:white;
+    border-radius:32px !important;
+    border:#EF9B28;
+    padding: 10px 10px;
+}
