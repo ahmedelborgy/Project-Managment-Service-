@@ -77,13 +77,7 @@ addProject(addProjectForm:FormGroup){
     },
   })
 }
-ngOnInit(): void {
-  if(localStorage.getItem('action')=='add New'){
-    this.is_title=''
-    this.is_description=''
-  }
 
-}
 
 editProject(addProjectForm:FormGroup){
   console.log(this.editid);
