@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Iproject } from '../../../../interface/iproject';
@@ -9,7 +9,7 @@ import { ToastrService } from 'ngx-toastr';
   templateUrl: './add-edit-project.component.html',
   styleUrls: ['./add-edit-project.component.scss']
 })
-export class AddEditProjectComponent {
+export class AddEditProjectComponent  implements OnInit {
   isInputDisabled:boolean=true;
   itemProject:Iproject | undefined;
   editid:any;
@@ -23,22 +23,40 @@ this.editid=this.itemProject?.id;
 this.is_title=this.itemProject?.title;
 this.is_description=this.itemProject?.description;
 console.log(this.itemProject,this.action);
+
+
     }
+    ngOnInit(): void {
+      if(localStorage.getItem('action')=='add New'){
+        this.is_title=''
+        this.is_description=''
+      }
+   
+    }
+  
   addProjectForm=new FormGroup({
   title: new FormControl(null),
   description:new FormControl(null)
 })
-
+// addEditProject(data:FormGroup){
+//   console.log(data);
+  
+// }
 addEditProject(addProjectForm:FormGroup){
-if(addProjectForm.valid){
-console.log(this.itemProject);
+ console.log(this.itemProject);
+ 
+
 if(this.itemProject=undefined){
   this.addProject(addProjectForm);
 }
 else{
   this.editProject(addProjectForm)
 }
-}
+
+
+
+
+
 }
 addProject(addProjectForm:FormGroup){
   console.log('add');
@@ -68,8 +86,8 @@ ngOnInit(): void {
 }
 
 editProject(addProjectForm:FormGroup){
-  /*console.log(this.editid);
-  console.log('');*/
+  console.log(this.editid);
+  
   
   this._ProjectService.editProjects(addProjectForm.value,this.editid).subscribe({
     next:(res)=>{

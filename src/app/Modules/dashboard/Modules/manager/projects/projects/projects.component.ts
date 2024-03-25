@@ -11,9 +11,11 @@ import { DeleteComponent } from 'src/app/Modules/shared/delete/delete.component'
   templateUrl: './projects.component.html',
   styleUrls: ['./projects.component.scss']
 })
+
 export class ProjectsComponent implements OnInit {
   constructor(public dialog: MatDialog,private _ProjectService:ProjectService, private _Router:Router){
   }
+ 
   tableProjects:any;
   Projects:any[]=[];
   length=20;
@@ -23,6 +25,10 @@ export class ProjectsComponent implements OnInit {
   pageSizeOptions=[5,10,20];
   pageEvent:PageEvent|any;
   searchKey:string='';
+  ngOnInit(): void {
+    this.getProjects();
+   localStorage.setItem('action','add New');
+  }
   getProjects(){
     let params={
       pageSize:this.pageSize,
@@ -40,6 +46,7 @@ export class ProjectsComponent implements OnInit {
       },
     })
   }
+  
   editProject(item:Iproject,action:string){
     console.log(item,action);
     this._ProjectService.getItemProject(item,action);
@@ -77,7 +84,7 @@ export class ProjectsComponent implements OnInit {
       }, 
       complete:()=> {
         console.log('complet delet');
-        //this.getProjects();
+        this.getProjects();
       },
     })
     }
@@ -173,6 +180,9 @@ handlePageEvent(e: PageEvent) {
   this.pageIndex = e.pageIndex;
   this.getProjects()
 }
-ngOnInit(): void {
-  this.getProjects()
-}}
+// ngOnInit(): void {
+//   this.getProjects()
+// }
+
+
+}
