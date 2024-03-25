@@ -16,4 +16,13 @@ export class HelperService {
     return this._HttpClient.get('Users/', { params: { pageSize: 10000, pageNumber: 1 ,group:2 } })
     
   }
+  getProgressCharts(): Observable<any> {
+    return this._HttpClient.get('Task/count');
+    
+  }
+  // Users/count
+  getUserCharts(): Observable<any> {
+    return this._HttpClient.get('Users/count');
+    
+  }
 }
