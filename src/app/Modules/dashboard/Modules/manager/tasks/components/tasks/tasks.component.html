@@ -8,7 +8,7 @@
 <div class="tasksTable mt-5 mx-5 rounded  bg-white shadow">
   <div class="col-3 px-4 py-4 ">
     <div class="input-group mb-3 ">
-      <input type="text"  class="form-control mt-2" placeholder="Search by name" aria-label="Username" aria-describedby="basic-addon1" >
+      <input type="text"   [(ngModel)]="searchKey" (keyup.enter)="getManagerTasks()"  class="form-control mt-2" placeholder="Search by name" aria-label="Username" aria-describedby="basic-addon1" >
      </div>
   </div>
     <table class="table shadow p-3 mb-5 bg-body-tertiary  table-striped rounded-3 ">

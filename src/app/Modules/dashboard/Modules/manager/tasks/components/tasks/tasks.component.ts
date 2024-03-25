@@ -13,6 +13,7 @@ import { CardTaskComponent } from '../card-task/card-task.component';
   styleUrls: ['./tasks.component.scss'],
 })
 export class TasksComponent {
+  searchKey: string='';
   tableTask: any;
   managerTasks: any[] = [];
   length = 20;
@@ -25,9 +26,12 @@ export class TasksComponent {
     private _Router: Router,
     private _Toastr:ToastrService,
     public _Dialog: MatDialog,) { }
+  
+  
   ngOnInit(): void {
     this.getManagerTasks();
   }
+
   getManagerTasks() {
     let params = {
       pageSize: this.pageSize,
@@ -45,6 +49,8 @@ export class TasksComponent {
       complete: () => {},
     });
   }
+
+  
   handlePageEvent(e: PageEvent) {
     this.pageEvent = e;
     this.length = e.length;
@@ -52,6 +58,8 @@ export class TasksComponent {
     this.pageIndex = e.pageIndex;
     this.getManagerTasks();
   }
+
+  
   openDeleteTaskDialog(taskData:any) {
     console.log(taskData);
 
