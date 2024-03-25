@@ -36,6 +36,7 @@ export class TasksComponent {
     let params = {
       pageSize: this.pageSize,
       pageNumber: this.pageNumber,
+      title:this.searchKey
     };
     this._TasksService.getManagerTasks(params).subscribe({
       next: (res) => {
