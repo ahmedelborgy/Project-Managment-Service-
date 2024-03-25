@@ -8,6 +8,8 @@ const routes: Routes = [  {
   component: TasksComponent
 },
  { path: 'add', component: AddEditTasksComponent },
+ { path: 'edit/:id', component: AddEditTasksComponent },
+
 
 
 ];

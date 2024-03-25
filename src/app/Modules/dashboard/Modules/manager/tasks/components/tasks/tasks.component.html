@@ -12,7 +12,7 @@
     <div>
         <input type="text">
     </div>
-    <table class="table mt-4   mb-5 bg-body-tertiary ">
+    <table class="table mt-4  table-striped  mb-5 bg-body-tertiary ">
         <thead>
             <tr>
                 <th >Title</th>
@@ -39,10 +39,10 @@
                 <td>{{item.project.title}}</td>
                 <td>{{item.creationDate|date:'MMM d, y, h:mm:ss a'}}</td>
                 <td><button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-                    <mat-icon>more_vert</mat-icon>
+                    <mat-icon class="icon-color fs-3">more_vert</mat-icon>
                   </button>
                   <mat-menu #menu="matMenu" >
-                    <button mat-menu-item >
+                    <button mat-menu-item [routerLink]="['edit',item.id]" >
                         <i class="fa-regular fa-pen-to-square  icon-color "></i>
                       <span class="ps-3  ">Edit</span>
                     </button>

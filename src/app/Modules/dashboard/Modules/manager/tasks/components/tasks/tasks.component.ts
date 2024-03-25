@@ -1,3 +1,5 @@
+import { ToastrService } from 'ngx-toastr';
+
 import { TasksService } from '../services/tasks.service';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
@@ -20,7 +22,9 @@ export class TasksComponent {
   pageNumber = 1;
   pageSizeOptions = [5, 10, 20];
   pageEvent: PageEvent | any;
-  constructor(private _TasksService: TasksService, private _Router: Router,
+  constructor(private _TasksService: TasksService,
+    private _Router: Router,
+    private _Toastr:ToastrService,
     public _Dialog: MatDialog,) { }
   ngOnInit(): void {
     this.getManagerTasks();
@@ -98,11 +102,11 @@ export class TasksComponent {
     this._TasksService.onGetTaskById(taskId).subscribe({
       next: (res) => {
         console.log(res);
-      //  this.toastr.success('Category', ' deleted Category Success');
+       this._Toastr.success('Task', ' deleted Task Success');
       },
       error: (err) => {
         console.log(err);
-        //this.toastr.error('Category', ' deleted Category field');
+       this._Toastr.error('Task', ' deleted Task Field');
       },
       complete: () => {
         this.getManagerTasks();
