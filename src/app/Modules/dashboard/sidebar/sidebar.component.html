@@ -1,16 +1,16 @@
-<section class="vh-100">
-    <div>
-       
-        <ul>
-            <ng-container *ngFor="let item of Menu">
-                
-             <li *ngIf="item.isActive">
-            <a [routerLink]="[item.link]" class="text-white">
-                <span><i [class]=item.icon></i></span>
-                <span>{{item.text}}</span>
-            </a>
-           </li>
-        </ng-container>
-        </ul>
-    </div>
+<section class=" vh-100 ps-4 pt-5  ">
+    <ul >
+        <ng-container *ngFor="let item of Menu">
+            
+         <li *ngIf="item.isActive">
+        <a [routerLink]="[item.link]" 
+        routerLinkActive="bg-main-transparent"
+        class="text-white">
+            <span><i [class]=item.icon></i></span>
+            <span>{{item.text}}</span>
+        </a>
+       </li>
+    </ng-container>
+    </ul>
+
 </section>

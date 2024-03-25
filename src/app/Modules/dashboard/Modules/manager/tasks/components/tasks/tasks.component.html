@@ -1,0 +1,73 @@
+<section>
+    <div class="title shadow-sm px-5 bg-header py-4 d-flex justify-content-between">
+    <h3>Tasks</h3>
+    <button routerLink="add" class="main w-25 px-3">
+      <i class="fa-solid fa-plus text-white p-1"></i>Add new Task
+    </button>
+  </div>
+<div class="tasksTable mt-5 mx-5 rounded  bg-white shadow">
+  <div class="col-3 mt-4 ms-2">
+    <div class="input-group mb-3">
+      <input type="text"  class="form-control mt-2" placeholder="Search by name" aria-label="Username" aria-describedby="basic-addon1" >
+     </div>
+  </div>
+    <table class="table shadow p-3 mb-5 bg-body-tertiary rounded-3 ">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Statues</th>
+                <th>Employee</th>
+                <th>Project</th>
+                <th>Date Created</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of managerTasks; let isEven=even" [class]="isEven?'bg-white':'bg-secondary-subtle'">
+                <td>{{item.title}}</td>
+               
+                <td class="td-style"> <span class="status " [ngClass]="{
+                'todo': item.status=='ToDo',
+                'inProgress':item.status=='InProgress',
+                'done':item.status=='Done'
+            }">
+                    {{item.status}}
+                </span>
+                    </td>
+                <td>{{item.employee.userName}}</td>
+                <td>{{item.project.title}}</td>
+                <td>{{item.creationDate|date:'MMM d, y, h:mm:ss a'}}</td>
+                <td><button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                    <mat-icon>more_vert</mat-icon>
+                  </button>
+                  <mat-menu #menu="matMenu" >
+                    <button mat-menu-item >
+                        <i class="fa-regular fa-pen-to-square  icon-color "></i>
+                      <span class="ps-3">Edit</span>
+                    </button>
+                    <button mat-menu-item (click)="openViewTaskDialog(item)" >
+                        <i class="fa-regular fa-eye icon-color"></i>
+                      <span class="ps-3 ">View</span>
+                    </button>
+                    <button mat-menu-item (click)="openDeleteTaskDialog(item)">
+                        <i class="fa-solid fa-trash icon-color "></i>
+                      <span class="ps-3" >Delete</span>
+                    </button>
+                  </mat-menu></td>
+            </tr>
+        </tbody>
+    
+    </table>
+    <div class="my-3 p-2">
+        <mat-paginator  [length]="length"
+        [pageSize]="pageSize"
+        [pageIndex]="pageIndex"
+        [pageSizeOptions]="pageSizeOptions"
+        (page)="handlePageEvent($event)"
+        aria-label="Select page">
+        </mat-paginator>
+    </div>
+
+    </div>
+
+</section>

@@ -1,20 +1,24 @@
 <section>
-   <div class="row justify-content-end">
-     <div class="col-4 px-4">
-       <div class="d-flex align-items-center justify-content-end">
-         <img src="/../assets/images/profile.png" class="">
-         <h6 class="mt-2 p-3">{{userName}}</h6>
-        
-         <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-          <mat-icon><span class="material-symbols-outlined primary">expand_more</span></mat-icon>
-        </button>
-        <mat-menu #menu="matMenu">
-          <button mat-menu-item>
-            <mat-icon><span class="material-symbols-outlined primary">logout</span></mat-icon>
-            <span class="primary" (click)="myLogout()">Logout</span>
-          </button>
-        </mat-menu>
-       </div>
-     </div>
+
+  <div class="row shadow-sm align-items-center justify-content-between">
+   <div class="col-6 ">
+     <img src="../../../../assets/images/logosvg.svg" height="75px" width="30%"  alt="">
    </div>
- </section>
+    <div class="col-6 ">
+      <div class="d-flex  justify-content-end align-items-center">
+        <img src="/../assets/images/profile.png" class="">
+        <h6 class="mt-2 p-3">{{userName}}</h6>
+       
+        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+         <mat-icon><span class="material-symbols-outlined primary">expand_more</span></mat-icon>
+       </button>
+       <mat-menu #menu="matMenu">
+         <button mat-menu-item (click)="myLogout()">
+           <mat-icon><span class="material-symbols-outlined primary">logout</span></mat-icon>
+           <span class="primary" >Logout</span>
+         </button>
+       </mat-menu>
+      </div>
+    </div>
+  </div>
+</section>

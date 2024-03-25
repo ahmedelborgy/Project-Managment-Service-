@@ -29,14 +29,16 @@ export class SidebarComponent {
   Menu: Menu[] = [
     {
       text: 'Home',
-      link: '/dashboard/home',
+      link: '/dashboard/manager/home',
       icon: 'fa-solid fa-house',
       isActive: this.isManager()||this.isEmployee()
     },
+ 
+
     {
-      text: 'Tasks',
-      link: '/dashboard/manager/tasks',
-      icon: 'fa-solid fa-list-check',
+      text: 'Users',
+      link: '/dashboard/manager/users',
+      icon: 'fa-solid fa-users',
       isActive: this.isManager()
     },
     {
@@ -46,9 +48,9 @@ export class SidebarComponent {
       isActive:this.isManager()
     },
     {
-      text: 'Users',
-      link: '/dashboard/manager/users',
-      icon: 'fa-solid fa-users',
+      text: 'Tasks',
+      link: '/dashboard/manager/tasks',
+      icon: 'fa-solid fa-list-check',
       isActive: this.isManager()
     },
     {

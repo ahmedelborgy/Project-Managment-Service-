@@ -9,14 +9,25 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatDialogModule} from '@angular/material/dialog';
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatSelectModule } from '@angular/material/select';
+
+import { NgxDropzoneModule } from 'ngx-dropzone';
+import { ToastrModule} from 'ngx-toastr';
+import { DeleteComponent } from './delete/delete.component';
+
+
 @NgModule({
   declarations: [
-    HeaderComponent
+    HeaderComponent,
+    DeleteComponent
   ],
-  imports: [
-   
 
-    MatDialogModule,
+ 
+
+
+  imports:[
 
     CommonModule,
     HttpClientModule,
@@ -25,7 +36,16 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatFormFieldModule,MatButtonModule,
     MatMenuModule,
     MatButtonModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatDialogModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatSelectModule,
+    NgxDropzoneModule,
+    ToastrModule.forRoot({
+     closeButton:true,
+      
+    })
   ],
   exports: [HttpClientModule,
     MatDialogModule,
@@ -34,6 +54,13 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatMenuModule,
     MatButtonModule,
     MatPaginatorModule,
-    MatFormFieldModule,MatButtonModule]
+    MatDialogModule,
+    MatFormFieldModule,MatButtonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatSelectModule,
+    NgxDropzoneModule,
+    ToastrModule,
+]
 })
 export class SharedModule { }

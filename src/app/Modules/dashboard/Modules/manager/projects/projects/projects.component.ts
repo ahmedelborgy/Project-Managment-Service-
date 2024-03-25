@@ -1,21 +1,7 @@
 import { DeletProjectComponent } from './component/add-edit-project/delet-project/delet-project.component';
 import { Manager } from './../../interfac/iproject';
 import { Component, OnInit } from '@angular/core';
-import { ManagerService } from '../../services/manager.service';
 import { Router } from '@angular/router';
-import { PageEvent } from '@angular/material/paginator';
-import { FormControl, FormGroup } from '@angular/forms';
-import { Iproject } from '../../interfac/iproject';
-import { MatDialog } from '@angular/material/dialog';
-import { AddEditProjectComponent } from './component/add-edit-project/add-edit-project.component';
-
-
-
-
-
-
-
-
 @Component({
   selector: 'app-projects',
   templateUrl: './projects.component.html',
@@ -25,22 +11,9 @@ export class ProjectsComponent implements OnInit {
 
 
   tableProject:any;
-  projects:Iproject[]=[]
-  serchKey:string='';
-userName:string='';
-  length=20;
-  pageSize=5;
-  pageIndex=0;
-  pageNumber=1;
-  
-totalNumberOfRecords=20;
-
-  pageSizeOptions=[5,10,this.totalNumberOfRecords];
-  pageEvent:PageEvent|any;
-  constructor(private _ManagerService:ManagerService,
-    public dialog: MatDialog,
-     private _Router:Router){}
-     ngOnInit(): void {
+  projects:any[]=[]
+  constructor(private _ManagerService:ManagerService, private _Router:Router){}
+  ngOnInit(): void {
     this.getProjects()
     localStorage.setItem('action','add New');
   }
@@ -50,14 +23,7 @@ totalNumberOfRecords=20;
 
   
 getProjects(){
-  let prame={
-   
-    title:this.serchKey,
-    pageSize:this.pageSize,
-    pageNumber:this.pageNumber
-
-  }
-  this._ManagerService.getAllProjects(prame).subscribe({
+  this._ManagerService.getAllProjects().subscribe({
     next:(res)=>{
       console.log(res)
       this.totalNumberOfRecords=res.totalNumberOfRecords;

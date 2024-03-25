@@ -1,12 +1,14 @@
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+/*import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Iproject } from '../interfac/iproject';
+import { Observable } from 'rxjs';
+import { Iproject } from '../../../interfac/iproject';
+
+//import { Iproject } from '../interfac/iproject';
 @Injectable({
   providedIn: 'root'
 })
 export class ManagerService {
-itemProject:Iproject|any;
+itemProject:any;
 action:string|any;
   constructor(private _HttpClient:HttpClient) {}
   getUsers(params:any):Observable<any>{
@@ -35,4 +37,7 @@ console.log(item,action);
 this.itemProject=item;
 this.action=action;
   }
-}
+}*/
+//import { Observable } from 'rxjs/internal/Observable';
+
+
