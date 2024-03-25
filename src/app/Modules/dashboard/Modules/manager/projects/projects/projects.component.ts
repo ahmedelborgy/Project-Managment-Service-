@@ -6,11 +6,13 @@ import { ManagerService } from '../../services/manager.service';
 import { MatDialog } from '@angular/material/dialog';
 import { PageEvent } from '@angular/material/paginator';
 import { DeletProjectComponent } from './component/delet-project/delet-project.component';
+import { DeleteComponent } from 'src/app/Modules/shared/delete/delete.component';
 @Component({
   selector: 'app-projects',
   templateUrl: './projects.component.html',
   styleUrls: ['./projects.component.scss']
 })
+
 
 // export class ProjectsComponent implements OnInit {
 //   tableProject:any;
