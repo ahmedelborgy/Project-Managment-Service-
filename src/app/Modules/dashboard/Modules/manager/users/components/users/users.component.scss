@@ -32,3 +32,11 @@ table{
  i{
     color: #EF9B28;
  }
+ .form-control{
+    border-radius: 24px;
+    padding-left: 50px;
+}
+input:focus{
+   border-color: rgba(18, 78, 59, 0.708);
+   box-shadow: 0 4px 8px 0 rgba(64, 110, 95, 0.2), 0 6px 20px 0 rgba(19, 83, 68, 0.221);
+}
