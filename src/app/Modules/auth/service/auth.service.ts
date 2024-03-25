@@ -46,6 +46,13 @@ export class AuthService  {
    resetPassword(data:any):Observable<any>{
     return this._HttpClient.post('Users/Reset',data)
    }
+
+  ChangePassword(data:any):Observable<any>{
+    console.log(data);
+    
+    return this._HttpClient.put('Users/ChangePassword',data)
+   }
+
    logOut(){
     /* localStorage.removeItem('userName');
      localStorage.removeItem('userRole');
