@@ -11,10 +11,10 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatDialogModule} from '@angular/material/dialog';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
-
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import { ToastrModule} from 'ngx-toastr';
 import { DeleteComponent } from './delete/delete.component';
+
 
 @NgModule({
   declarations: [
@@ -41,6 +41,7 @@ import { DeleteComponent } from './delete/delete.component';
     })
   ],
   exports: [HttpClientModule,
+    MatDialogModule,
     MatIconModule,
     MatInputModule,
     MatMenuModule,

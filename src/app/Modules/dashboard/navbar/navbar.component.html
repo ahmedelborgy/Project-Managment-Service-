@@ -15,10 +15,14 @@
           expand_more</span></mat-icon>
        </button>
        <mat-menu #menu="matMenu">
+ 
         
-         <button mat-menu-item >
+        
+
+         <button mat-menu-item (click)="myLogout()">
+
            <mat-icon><span class="material-symbols-outlined primary">logout</span></mat-icon>
-           <span class="primary" (click)="myLogout()">Logout</span>
+           <span class="primary" >Logout</span>
          </button>
          <button mat-menu-item (click)=openDialogChangePass()>
           <mat-icon><span class="material-symbols-outlined primary">lock_open</span></mat-icon>

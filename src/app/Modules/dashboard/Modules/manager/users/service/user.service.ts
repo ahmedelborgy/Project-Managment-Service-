@@ -13,4 +13,7 @@ export class UserService {
   onToggleActivaUser(id:number):Observable<any>{
   return this._HttpClient.put(`Users/${id}`,{})
   }
+  onViewUser(id:number):Observable<any>{
+    return this._HttpClient.get(`Users/${id}`)
+  }
 }

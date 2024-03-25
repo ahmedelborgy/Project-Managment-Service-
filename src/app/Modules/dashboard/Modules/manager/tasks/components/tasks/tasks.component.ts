@@ -1,3 +1,4 @@
+import { ToastrService } from 'ngx-toastr';
 import { TasksService } from '../services/tasks.service';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
@@ -12,6 +13,7 @@ import { CardTaskComponent } from '../card-task/card-task.component';
   styleUrls: ['./tasks.component.scss'],
 })
 export class TasksComponent {
+  searchKey: string='';
   tableTask: any;
   managerTasks: any[] = [];
   length = 20;
@@ -20,15 +22,23 @@ export class TasksComponent {
   pageNumber = 1;
   pageSizeOptions = [5, 10, 20];
   pageEvent: PageEvent | any;
-  constructor(private _TasksService: TasksService, private _Router: Router,
+
+  
+  constructor(private _TasksService: TasksService,
+    private _Router: Router,
+    private _Toastr:ToastrService,
     public _Dialog: MatDialog,) { }
+  
+  
   ngOnInit(): void {
     this.getManagerTasks();
   }
+
   getManagerTasks() {
     let params = {
       pageSize: this.pageSize,
       pageNumber: this.pageNumber,
+      title:this.searchKey
     };
     this._TasksService.getManagerTasks(params).subscribe({
       next: (res) => {
@@ -42,6 +52,8 @@ export class TasksComponent {
       complete: () => {},
     });
   }
+
+  
   handlePageEvent(e: PageEvent) {
     this.pageEvent = e;
     this.length = e.length;
@@ -49,6 +61,8 @@ export class TasksComponent {
     this.pageIndex = e.pageIndex;
     this.getManagerTasks();
   }
+
+
   openDeleteTaskDialog(taskData:any) {
     console.log(taskData);
 
@@ -98,11 +112,11 @@ export class TasksComponent {
     this._TasksService.onGetTaskById(taskId).subscribe({
       next: (res) => {
         console.log(res);
-      //  this.toastr.success('Category', ' deleted Category Success');
+       this._Toastr.success('Task', ' deleted Task Success');
       },
       error: (err) => {
         console.log(err);
-        //this.toastr.error('Category', ' deleted Category field');
+       this._Toastr.error('Task', ' deleted Task Field');
       },
       complete: () => {
         this.getManagerTasks();

@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { UserService } from '../../service/user.service';
+import { HelperService } from 'src/app/core/helper-services/helper.service';
 import { ConfirmUserComponent } from '../confirm-user/confirm-user/confirm-user.component';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { CardTaskComponent } from '../../../tasks/components/card-task/card-task.component';
+import { ViewUserComponent } from '../view-user/view-user.component';
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
@@ -18,7 +21,7 @@ export class UsersComponent implements OnInit {
   pageSizeOptions=[5,10,20];
   pageEvent:PageEvent|any;
   searchKey:string='';
-  constructor(public dialog: MatDialog,private _UserService:UserService){}
+  constructor(public dialog: MatDialog,private _UserService:UserService,private _HelperService:HelperService){}
   ngOnInit(): void {
     this.getAllUsers()
   }
@@ -53,6 +56,28 @@ openDialog(dataItem:any) {
     }
 }
   )
+}
+openDialogView(dataItem:any) {
+  const dialogRef = this.dialog.open(ViewUserComponent, {
+    data:dataItem
+  });
+  dialogRef.afterClosed().subscribe(result => {
+    console.log(`Dialog result: ${result}`);
+   if(result){
+    this.onViewUser(result)
+   }
+}
+  )
+}
+onViewUser(id:number){
+  this._UserService.onViewUser(id).subscribe({
+    next:(res)=>{
+      console.log(res)
+    },
+    error:(err)=>{
+      console.log(err)
+    }
+  })
 }
 onToggleBlockUser(id:number){
 this._UserService.onToggleActivaUser(id).subscribe({
