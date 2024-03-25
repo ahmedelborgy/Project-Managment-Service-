@@ -47,6 +47,12 @@
     </tbody>
 
 </table>
+<div *ngIf="Users.length == 0">
+    <div class="text-center">
+      <img src="../../../../../../../../assets/images/no-data.avif" alt="" />
+      <h4 class="my-3">No Data</h4>
+    </div>
+  </div>
 
 <mat-paginator [length]="length"
 [pageSize]="pageSize"
