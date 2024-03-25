@@ -50,10 +50,10 @@ addProject(addProjectForm:FormGroup){
     },
     error:(err)=>{
     console.log(err);
-     this._Toaster.error('Task Not Deleted')
+     this._Toaster.error('Added project Successfuly')
     },
     complete:()=> {
-      this._Toaster.success('Deleted Task Successfully')
+      this._Toaster.success('Added Task Successfully')
       this._Router.navigate(['/dashboard/manager/projects'])
       
     },

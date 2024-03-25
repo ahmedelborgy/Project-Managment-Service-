@@ -47,6 +47,7 @@ export class RegisterComponent {
     },
     complete:()=>{
       this._Toastr.success('Success', 'Register sucess');
+      this.openDialog()
     }
   })
   

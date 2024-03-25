@@ -1,9 +1,16 @@
 <section>
-    <div class="title shadow-sm px-5 bg-header py-4 d-flex justify-content-between">
-        <h3>Projects</h3>
-        <button class="main" [routerLink]="['/dashboard/manager/add-edit']"><i class="fa-solid fa-plus text-white p-1"></i>Add new Project</button>
+  <div class="title shadow-sm px-5 bg-header py-4 d-flex justify-content-between">
+    <h3>Projects</h3>
+    <button routerLink="/dashboard/manager/add-edit" class="main w-25 px-3">
+      <i class="fa-solid fa-plus text-white p-1"></i>Add new Project
+    </button>
+</div>
+<div class="tasksTable mt-5 mx-5 rounded  bg-white shadow">
+<div class="col-3 mt-4 ms-2">
+      <div class="input-group mb-3">
+        <input type="text" [(ngModel)]="searchKey" (keyup.enter)="getProjects()" class="form-control mt-2" placeholder="Search by name" aria-label="Username" aria-describedby="basic-addon1" >
+       </div>
     </div>
-</section>
 <div class="projectsTable">
   <!--<div class="input-group  mt-3 w-50 position-relative ">
     <div class="input-group-append ">
@@ -35,37 +42,7 @@
                 <td>{{item.description}}</td>
                 <td>{{item.modificationDate|date:'MMM d, y, h:mm:ss a'}}</td>
                 <td>{{item.id}}</td>
-                <td>{{item.creationDate|date:'MMM d, y, h:mm:ss a'}}</td>
-                
-               <!-- <td><button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-                    <mat-icon>more_vert</mat-icon>
-                  </button>
-                  <mat-menu #menu="matMenu">
-
-                    <button mat-menu-item (click)="editProject(item,'edit')">
-                        <i class="fa-regular fa-pen-to-square p-1"></i>
-                      <span >Edit</span>
-                    </button>
-                    <button mat-menu-item (click)="viewProject(item,'view')">
-                        <i class="fa-regular fa-eye p-1"></i>
-                      <span>View</span>
-                    </button>
-                    <button mat-menu-item (click)="openDialog(item)" >
-                        <i class="fa-solid fa-trash p-1"></i>
-                    </button>
-                  </mat-menu>
-                    <button mat-menu-item>
-                        <i class="fa-regular fa-pen-to-square p-2"></i>
-                      <span>Edit</span>
-                    </button>
-                    <button mat-menu-item>
-                        <i class="fa-regular fa-eye p-2"></i>
-                      <span>View</span>
-                    </button>
-                    <button mat-menu-item>
-                        <i class="fa-solid fa-trash p-2"></i>
-                      <span>Delete</span>
-                    </button>-->       
+                <td>{{item.creationDate|date:'MMM d, y, h:mm:ss a'}}</td>      
                     <td><button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
                       <mat-icon>more_vert</mat-icon>
                     </button>
@@ -87,7 +64,7 @@
         </tbody>
     </table>
     
-    </div>
+  
     <mat-paginator [length]="length"
 [pageSize]="pageSize"
 [pageIndex]="pageIndex"

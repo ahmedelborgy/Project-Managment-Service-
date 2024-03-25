@@ -27,7 +27,7 @@ export class ProjectsComponent implements OnInit {
     let params={
       pageSize:this.pageSize,
       pageNumber:this.pageNumber,
-      userName:this.searchKey
+      title:this.searchKey
     }
     this._ProjectService.getAllProjects(params).subscribe({
       next:(res)=>{
