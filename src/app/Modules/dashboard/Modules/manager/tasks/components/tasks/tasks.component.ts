@@ -5,7 +5,7 @@ import { PageEvent } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteComponent } from 'src/app/Modules/shared/delete/delete.component';
 import { CardTaskComponent } from '../card-task/card-task.component';
-
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-tasks',
   templateUrl: './tasks.component.html',
@@ -20,8 +20,8 @@ export class TasksComponent {
   pageNumber = 1;
   pageSizeOptions = [5, 10, 20];
   pageEvent: PageEvent | any;
-  constructor(private _TasksService: TasksService, private _Router: Router,
-    public _Dialog: MatDialog,) { }
+  constructor(private _TasksService: TasksService, private _Router: Router,private _Toaster:ToastrService
+    ,public _Dialog: MatDialog,) { }
   ngOnInit(): void {
     this.getManagerTasks();
   }
@@ -78,11 +78,11 @@ export class TasksComponent {
       console.log(result);
       //  let x = {name:result}
       if (result) {
-        this.getTaskById(result);
+        this.deleteTask(result);
       }
     });
   }
-  getTaskById(taskId: any) {
+  /*getTaskById(taskId: any) {
     this._TasksService.onGetTaskById(taskId).subscribe({
       next:(res) => {
           console.log(res);
@@ -93,16 +93,16 @@ export class TasksComponent {
      
     )
     
-  }
+  }*/
   deleteTask(taskId: any) {
     this._TasksService.onGetTaskById(taskId).subscribe({
       next: (res) => {
         console.log(res);
-      //  this.toastr.success('Category', ' deleted Category Success');
+       this._Toaster.success('Category', ' deleted Category Success');
       },
       error: (err) => {
         console.log(err);
-        //this.toastr.error('Category', ' deleted Category field');
+        this._Toaster.error('Category', ' deleted Category field');
       },
       complete: () => {
         this.getManagerTasks();
