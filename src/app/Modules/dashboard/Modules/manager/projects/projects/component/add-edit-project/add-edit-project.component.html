@@ -1,0 +1,66 @@
+<section  id="add">
+<section>
+    <div class="title shadow-sm px-5  mt-4 d-flex justify-content-between flex-column">
+      
+        <h3 routerLink="/dashboard/manager/projects">
+            <span>
+                <mat-icon>
+                    arrow_back_ios
+                    <span class="material-symbols-outlined">
+                    arrow_back_ios
+                    </span></mat-icon>
+            </span>
+            View All Projects</h3>
+
+            <h3>{{action}} Project</h3>
+    </div>
+</section>
+
+<section class="card-form w-75 m-auto mt-5 p-5"  >
+<form  class="" [formGroup]="addProjectForm" (ngSubmit)="addProject(addProjectForm)">
+<div class="mb-3 "   >
+    <label for="" class="form-label">Title</label>
+    <input *ngIf="action=='view'" [attr.disabled]="isInputDisabled ? '' : null"
+    
+    type="text"
+    class="form-control"
+       [value]="is_title"/>
+
+
+
+
+    <input 
+    *ngIf="action !='view'"
+        type="text"
+        class="form-control"
+        name=""
+        id=""
+        formControlName="title"
+        placeholder="Title"
+        [(ngModel)]="is_title" 
+    />
+</div>
+<div class="mb-3">
+    <label for="" class="form-label">Description</label>
+    <textarea *ngIf="action=='view'" [attr.disabled]="isInputDisabled ? '' : null"
+     placeholder="Description" class="form-control" name="" id="" rows="3" [value]="is_description"></textarea>
+
+   
+   
+    <textarea   *ngIf="action !='view'" [(ngModel)]="is_description"   formControlName="description" placeholder="Description" class="form-control" name="" id="" rows="3"></textarea>
+
+
+</div>
+
+
+<hr class="my-5">
+<div class="d-flex justify-content-between mt-5 mt-5 ">
+    <button routerLink="/dashboard/manager/projects" type="button" class="main px-3 bg-white text-dark border-black border-1 border">Cancel</button>
+    <button *ngIf="action !='view'" type="submit" class="main px-3">{{action}} Project</button>
+</div>
+
+</form>
+</section>
+</section>
+
+

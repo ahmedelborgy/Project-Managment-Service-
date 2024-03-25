@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
       console.log(err)
       this._Toastr.error('Try again', 'Login not sucess');
     },complete:()=>{
-      this._Toastr.show('Successfuly', 'Login sucess');
+      this._Toastr.success('Successfuly', 'Login sucess');
       this._Router.navigateByUrl('/dashboard')
     }, 
   },

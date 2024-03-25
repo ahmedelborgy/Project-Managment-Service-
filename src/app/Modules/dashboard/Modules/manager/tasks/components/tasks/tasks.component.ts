@@ -22,10 +22,8 @@ export class TasksComponent {
   pageNumber = 1;
   pageSizeOptions = [5, 10, 20];
   pageEvent: PageEvent | any;
-  constructor(private _TasksService: TasksService,
-    private _Router: Router,
-    private _Toastr:ToastrService,
-    public _Dialog: MatDialog,) { }
+  constructor(private _TasksService: TasksService, private _Router: Router,
+    public _Dialog: MatDialog,_Toastr:ToastrService) { }
   ngOnInit(): void {
     this.getManagerTasks();
   }
@@ -82,7 +80,7 @@ export class TasksComponent {
       console.log(result);
       //  let x = {name:result}
       if (result) {
-        this.getTaskById(result);
+        this.deleteTask(result);
       }
     });
   }
@@ -102,11 +100,11 @@ export class TasksComponent {
     this._TasksService.onGetTaskById(taskId).subscribe({
       next: (res) => {
         console.log(res);
-       this._Toastr.success('Task', ' deleted Task Success');
+      //  this.toastr.success('Category', ' deleted Category Success');
       },
       error: (err) => {
         console.log(err);
-       this._Toastr.error('Task', ' deleted Task Field');
+        //this.toastr.error('Category', ' deleted Category field');
       },
       complete: () => {
         this.getManagerTasks();

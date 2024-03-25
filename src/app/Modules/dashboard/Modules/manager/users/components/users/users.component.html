@@ -1,16 +1,15 @@
 <section>
-    <div class="title shadow-sm px-5 p-3 mt-4">
+    <div class="title shadow-sm px-5 bg-header py-4 d-flex justify-content-between">
         <h3>Users</h3>
     </div>
 </section>
-<div class="usersTable">
+<div class="usersTable mt-5 mx-5 rounded bg-white shadow">
     <div class="col-3 mt-4 ms-2">
         <div class="input-group mb-3">
-         
-          <input type="text" [(ngModel)]="searchKey" (keyup.enter)="getAllUsers()" class="form-control position-relative" placeholder="Search by name" aria-label="Username" aria-describedby="basic-addon1" >
+          <input type="text" [(ngModel)]="searchKey" (keyup.enter)="getAllUsers()" class="form-control mt-2" placeholder="Search by name" aria-label="Username" aria-describedby="basic-addon1" >
          </div>
       </div>
-<table class="table  shadow p-3 mb-5 bg-body-tertiary rounded-3">
+<table class="table shadow p-3 mb-5 bg-body-tertiary rounded-3">
     <thead>
         <tr>
             <th class="col">UserName</th>
@@ -39,7 +38,7 @@
                     <i class="fa-solid fa-ban p-1"></i>
                   <span>{{item.isActivated?'Block':'unBlock'}}</span>
                 </button>
-                <button mat-menu-item>
+                <button mat-menu-item (click)="openDialogView(item)">
                     <i class="fa-solid fa-eye p-1"></i>
                   <span>View</span>
                 </button>

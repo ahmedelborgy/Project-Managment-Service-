@@ -34,11 +34,7 @@ export class AddEditTasksComponent {
     // this.taskId = _ActivatedRoute.snapshot.params['id'];
   }
   ngOnInit(): void {
-    // this.filteredOptions = this.taskForm.valueChanges.pipe(
-    //   startWith(''),
-    //   map(value => this._filter(value || '')),
-  
-    //  );
+   
      this.getListManagerProjects();
     this.getListUsers(); 
     // if (this.taskId > 0) {
@@ -161,7 +157,7 @@ export class AddEditTasksComponent {
       },
       error: () => {},
       complete: () => {
-        //tosre
+        //toster
       },
     });
   }
