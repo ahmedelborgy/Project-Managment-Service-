@@ -1,4 +1,4 @@
-<section>
+<!-- <section>
     <div class="title shadow-sm px-5 p-3 mt-4 d-flex justify-content-between">
         <h3>Projects</h3>
         <button class="main"><i class="fa-solid fa-plus text-white p-1"></i>Add new Project</button>
@@ -46,4 +46,85 @@
     </table>
     </div>
 
-    
+     -->
+     <!-- ------------------------------ -->
+
+     <section>
+      <div class="title shadow-sm px-5 p-3 mt-4 d-flex justify-content-between">
+          <h3>Projects</h3>
+          <button class="main" routerLink="/dashboard/manager/add-edit"><i class="fa-solid fa-plus text-white p-1"></i>Add new Project</button>
+      </div>
+  
+  </section>
+  
+  <div class="projectsTable">
+  
+    <div class="input-group  mt-3 w-50 position-relative ">
+      <div class="input-group-append ">
+        <span class="input-group-text h-100" 
+        id="basic-addon2"><i class="fas fa-search"></i></span>
+      </div>
+      <input type="text" [(ngModel)]="serchKey" (keyup.enter)="getProjects()"
+        class="form-control" placeholder="Search By Title" aria-label="Search" aria-describedby="basic-addon2">
+      
+    </div>
+  
+  
+    </div>
+  <div>
+      <table class="table mt-4 shadow p-3 mb-5 bg-body-tertiary rounded-3">
+          <thead>
+              <tr>
+                  <th class="col">Name</th>
+                  <th class="col">Title</th>
+                  <th class="col">Description</th>
+                  <th class="col">modification Data</th>
+                  <th class="col">Num Task</th>
+                  <th class="col">Date created</th>
+                  <th class="col">Actions</th>
+              </tr>
+          </thead>
+          <tbody>
+        
+              <tr *ngFor="let item of projects">
+                <td>{{item?.manager?.userName?item?.manager?.userName:'manager'}}</td>
+                  <td>{{item.title}}</td>
+                  <td>{{item.description}}</td>
+                  <td>{{item.modificationDate|date:'MMM d, y, h:mm:ss a'}}</td>
+                  <td>{{item.id}}</td>
+                  <td>{{item.creationDate|date:'MMM d, y, h:mm:ss a'}}</td>
+                  <td><button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                      <mat-icon>more_vert</mat-icon>
+                    </button>
+                    <mat-menu #menu="matMenu">
+                      <button mat-menu-item (click)="editProject(item,'edit')">
+                          <i class="fa-regular fa-pen-to-square p-1"></i>
+                        <span >Edit</span>
+                      </button>
+                      <button mat-menu-item (click)="viewProject(item,'view')">
+                          <i class="fa-regular fa-eye p-1"></i>
+                        <span>View</span>
+                      </button>
+                      <button mat-menu-item (click)="openDialog(item)" >
+                          <i class="fa-solid fa-trash p-1"></i>
+                        <span>Delete</span>
+                      </button>
+                    </mat-menu></td>
+              </tr>
+             
+  
+          </tbody>
+        
+         
+      </table>
+      
+      </div>
+  
+      <mat-paginator [length]="length"
+  [pageSize]="pageSize"
+  [pageIndex]="pageIndex"
+  
+  [pageSizeOptions]="[5,10,totalNumberOfRecords]"
+  (page)="handlePageEvent($event)"
+  aria-label="Select page">
+  </mat-paginator>

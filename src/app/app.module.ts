@@ -5,8 +5,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { GlobalInterceptor } from './core/interceptores/global.interceptor';
+
 import { SharedModule } from './Modules/shared/shared.module';
+import { GlobalInterceptor } from './core/interCeptores/global.interceptor';
 
 @NgModule({
   declarations: [AppComponent],
