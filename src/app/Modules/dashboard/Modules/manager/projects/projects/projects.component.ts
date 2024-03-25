@@ -1,7 +1,8 @@
-import { DeletProjectComponent } from './component/add-edit-project/delet-project/delet-project.component';
+/*import { DeletProjectComponent } from './component/add-edit-project/delet-project/delet-project.component';
 import { Manager } from './../../interfac/iproject';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-projects',
   templateUrl: './projects.component.html',
@@ -122,18 +123,4 @@ handlePageEvent(e: PageEvent) {
 
 
 
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}*/
