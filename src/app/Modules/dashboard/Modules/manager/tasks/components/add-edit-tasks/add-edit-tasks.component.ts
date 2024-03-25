@@ -24,7 +24,7 @@ export class AddEditTasksComponent {
     private _TasksService: TasksService,
     private _Router: Router,
     private _HelperService: HelperService,
-    private __Toastr: ToastrService,
+    private _Toastr: ToastrService,
     private _ActivatedRoute: ActivatedRoute,
   ) {
 
@@ -37,9 +37,9 @@ export class AddEditTasksComponent {
    
      this.getListManagerProjects();
     this.getListUsers(); 
-    // if (this.taskId > 0) {
-    //   this.getTaskById(this.taskId);
-    // }
+    if (this.taskId > 0) {
+      this.getTaskById(this.taskId);
+    }
   }
   // private _filter(value: string): string[] {
   //   const filterValue = value.toLowerCase();
@@ -54,91 +54,98 @@ export class AddEditTasksComponent {
     projectId: new FormControl(null ),
   });
 
+  // onSubmitTask(data: FormGroup) {
+  //   console.log(data);
+  //   this._TasksService.onAddTask(data.value).subscribe({
+  //     next: (res) => {
+  //       console.log(res);
+  //       this.projects = res.data;
+  //     },
+  //     error: () => {},
+  //     complete: () => {
+  //       this._Router.navigate(['/dashboard/manager/tasks']);
+  //     },
+  //   });
+  // }
   onSubmitTask(data: FormGroup) {
-    console.log(data);
-    this._TasksService.onAddTask(data.value).subscribe({
+    console.log(data.value);
+    data.value.id = this.taskId;
+    let myData = new FormData();
+    myData.append('title', data.value.title);
+    myData.append('description', data.value.description);
+    myData.append('employeeId', data.value.employeeId);
+    myData.append('projectId', data.value.projectId);
+ 
+  
+
+ if (this.taskId) {
+      myData.append('id', data.value.id);
+      this.editTask(myData);
+  }else {
+       this.addTask(myData);
+   }
+  }
+
+
+
+
+  addTask(data: any) {
+    this._TasksService.onAddTask(data).subscribe({
       next: (res) => {
         console.log(res);
         this.projects = res.data;
       },
-      error: () => {},
+      error: (err) => {
+        console.log(err);
+      },
       complete: () => {
+        this._Toastr.success('Add Successfully');
         this._Router.navigate(['/dashboard/manager/tasks']);
       },
     });
   }
-  // onSubmitTask(data: FormGroup) {
-  //   console.log(data.value);
-  //   data.value.id = this.taskId;
-  //   let myData = new FormData();
-  //   myData.append('title', data.value.title);
-  //   myData.append('description', data.value.description);
-  //   myData.append('employeeId', data.value.employeeId);
-  //   myData.append('projectId', data.value.projectId);
- 
-  
-
-  // //   // if (this.taskId) {
-  // //   //   myData.append('id', data.value.id);
-  // //   //   this.editTask(myData);
-  // //   //    }else {
-  //     this.addTask(myData);
-  //  // }
-  // }
-  // addTask(data: any) {
-  //   this._TasksService.onAddTask(data).subscribe({
-  //     next: (res) => {
-  //       console.log(res);
-  //     //   this.projects = res.data;
-  //     },
-  //     error: (err) => {
-  //       console.log(err);
-  //     },
-  //     complete: () => {
-  //       this.__Toastr.success('Add Successfully');
-  //       this._Router.navigate(['/dashboard/manager/tasks']);
-  //     },
-  //   });
-  // }
-  // editTask(data: any) {
-  //   data.id = this.taskId;
-  //   this._TasksService.onEditTask(this.taskId, data).subscribe({
-  //     next: (res) => {
-  //       console.log(res);
-  //     },
-  //     error: (err) => {
-  //       console.log(err);
-  //     },
-  //     complete: () => {
-  //       //this._Toastr.success('Add Successfully');
-  //       this._Router.navigate(['/dashboard/manager/tasks']);
-  //     },
-  //   });
-  // }
+  editTask(data: any) {
+    data.id = this.taskId;
+    this._TasksService.onEditTask(this.taskId, data).subscribe({
+      next: (res) => {
+        console.log(res);
+        this.projects = res.data;
+      },
+      error: (err) => {
+        console.log(err);
+      },
+      complete: () => {
+        this._Toastr.success('Add Successfully');
+        this._Router.navigate(['/dashboard/manager/tasks']);
+      },
+    });
+  }
 
 
-  // getTaskById(id: number) {
-  //   this._TasksService.onGetTaskById(id).subscribe({
-  //     next: (res) => {
-  //       console.log(res);
-  //       this.taskData = res;
-  //     },
-  //     error: () => {},
-  //     complete: () => {
+  getTaskById(id: number) {
+    this._TasksService.onGetTaskById(id).subscribe({
+      next: (res) => {
+        console.log(res);
+        this.taskData = res.data;
+      },
+      error: () => {},
+      complete: () => {
      
-  //       this.taskForm.patchValue({
-  //         // title: this.taskData.title,
-  //         // description: this.taskData.description,
-  //         // employeeId: this.taskData.employee.id,
+        this.taskForm.patchValue({
+          // title: this.taskData.title,
+          // description: this.taskData.description,
+          // employeeId: this.taskData.employee.id,
       
         
-  //       })
+        })
 
     
-  //        }
-  //     })
+         }
+      })
  
-  // }
+  }
+
+
   getListManagerProjects() {
     this._HelperService.getManagerProjects().subscribe({
       next: (res) => {

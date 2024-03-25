@@ -22,6 +22,8 @@ export class TasksComponent {
   pageNumber = 1;
   pageSizeOptions = [5, 10, 20];
   pageEvent: PageEvent | any;
+
+  
   constructor(private _TasksService: TasksService,
     private _Router: Router,
     private _Toastr:ToastrService,
@@ -59,7 +61,7 @@ export class TasksComponent {
     this.getManagerTasks();
   }
 
-  
+
   openDeleteTaskDialog(taskData:any) {
     console.log(taskData);
 
