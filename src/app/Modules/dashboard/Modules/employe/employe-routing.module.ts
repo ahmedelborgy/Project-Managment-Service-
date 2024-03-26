@@ -6,11 +6,11 @@ import { HomeComponent } from '../../components/home/home.component';
 const routes: Routes = [{ path: '', component: EmployeComponent },
 { path: 'home', component: HomeComponent },
 {
-  path: 'projects-user',
+  path: 'projects',
   loadChildren: () => import('../employe/projects/projects.module').then(m =>m.ProjectsModule)
 }, 
 {
-  path: '',
+  path: 'tasks',
   loadChildren: () => import('../employe/tasks/tasks.module').then(m =>m.TasksModule)
 }, 
 ];
