@@ -1,5 +1,4 @@
 <section>
-
   <div class="row shadow-sm align-items-center justify-content-between">
    <div class="col-6 ">
      <img src="../../../../assets/images/logosvg.svg" height="75px" width="30%"  alt="">
@@ -15,10 +14,6 @@
           expand_more</span></mat-icon>
        </button>
        <mat-menu #menu="matMenu">
- 
-        
-        
-
          <button mat-menu-item (click)="myLogout()">
 
            <mat-icon><span class="material-symbols-outlined primary">logout</span></mat-icon>
@@ -28,6 +23,12 @@
           <mat-icon><span class="material-symbols-outlined primary">lock_open</span></mat-icon>
           <span class="primary">
             Change Password
+            </span>
+        </button>
+        <button mat-menu-item (click)="openDialogProfile()">
+          <mat-icon><span class="material-symbols-outlined primary">lock_open</span></mat-icon>
+          <span class="primary">
+            Profile
             </span>
         </button>
        </mat-menu>

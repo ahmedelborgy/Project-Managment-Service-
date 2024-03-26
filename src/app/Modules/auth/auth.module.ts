@@ -11,6 +11,7 @@ import { VerifyuserComponent } from './component/verifyAccount/verifyuser.compon
 import { ForgetPasswordComponent } from './component/forget-password/forget-password.component';
 import { ResetPasswordComponent } from './component/reset-password/reset-password.component';
 import { ChangePasswordComponent } from './component/change-password/change-password.component';
+import { ProfileComponent } from './component/profile/profile.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { ChangePasswordComponent } from './component/change-password/change-pass
     VerifyuserComponent,
     ForgetPasswordComponent,
     ResetPasswordComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    ProfileComponent
   ],
   imports: [
     CommonModule,

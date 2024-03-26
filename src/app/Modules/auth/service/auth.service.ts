@@ -50,6 +50,12 @@ export class AuthService  {
   ChangePassword(data:any):Observable<any>{
    return this._HttpClient.put('Users/ChangePassword',data)
    }
+   profileUser(data:any):Observable<any>{
+    return this._HttpClient.put('Users/',data)
+   }
+   getCurrentUser():Observable<any>{
+    return this._HttpClient.get('Users/currentUser')
+   }
 
    logOut(){
     /* localStorage.removeItem('userName');
