@@ -35,7 +35,7 @@ export class SidebarComponent {
     },
     {
       text: 'Home',
-      link: '/dashboard/employe/home',
+      link: '/dashboard/employee/home',
       icon: 'fa-solid fa-house',
       isActive:this.isEmployee()
     },
