@@ -6,6 +6,7 @@ import { ProjectService } from './service/project.service';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteComponent } from 'src/app/Modules/shared/delete/delete.component';
+import { DeleteProjectComponent } from './component/delete-project/delete-project.component';
 @Component({
   selector: 'app-projects',
   templateUrl: './projects.component.html',
@@ -59,7 +60,7 @@ export class ProjectsComponent implements OnInit {
       this._ProjectService.getItemProject(item,action);
     }
     openDialog(item:Iproject): void {
-      const dialogRef = this.dialog.open(DeleteComponent, {
+      const dialogRef = this.dialog.open(DeleteProjectComponent, {
         data: {isData:item},
       });
     
@@ -83,96 +84,12 @@ export class ProjectsComponent implements OnInit {
         
       }, 
       complete:()=> {
-        console.log('complet delet');
+        //console.log('complet delete');
         this.getProjects();
       },
     })
     }
-  /*tableProject:any;
-projects:any[]=[]
-  totalNumberOfRecords: any;
-  dialog: any;
-  pageEvent: PageEvent | undefined;
-  length: any;
-  pageSize: any;
-  pageIndex: any;
-  constructor(private _ProjectService:ProjectService, private _Router:Router){}
-  ngOnInit(): void {
-    //this.getProjects(data:any)
-   // localStorage.setItem('action','add New');
-  }
-getProjects(data:any){
-  this._ProjectService.getAllProjects(data).subscribe({
-    next:(res)=>{
-      console.log(res)
-      this.totalNumberOfRecords=res.totalNumberOfRecords;
-      console.log(this.totalNumberOfRecords);
-      
-      this.tableProject=res;
-      this.projects=res.data
-      console.log(this.projects);
-      
-      
-    },
-    error:(err)=>{
-      console.log(err)
-    },
-    complete:()=>{
-    // console.log('compelet project');
-     
-    }
-  })
-}
 
-editProject(item:Iproject,action:string){
-console.log(item,action);
-this._ProjectService.getItemProject(item,action);
-localStorage.setItem('action','edit');
-this._Router.navigate(['/dashboard/manager/add-edit'])
-}
-viewProject(item:Iproject,action:string){
-  localStorage.setItem('action','view');
-  this._Router.navigate(['/dashboard/manager/add-edit'])
-  this._ProjectService.getItemProject(item,action);
-}
-
-openDialog(item:Iproject): void {
-  const dialogRef = this.dialog.open(DeletProjectComponent, {
-    data: {isData:item},
-  });
-
-  dialogRef.afterClosed().subscribe((result: any) => {
-    console.log('The dialog was closed',result);
-    console.log(result);
-    if(result){
-this.deletProject(result)
-    }
-  });
-}
-
-deletProject(id:any){
-this._ProjectService.deletProject(id).subscribe({
-  next:(res)=> {
-    console.log(res);
-    
-  },
-  error:(err)=> {
-    console.log(err);
-    
-  }, 
-  complete:()=> {
-    console.log('complet delet');
-    //this.getProjects();
-  },
-})
-}
-handlePageEvent(e: PageEvent) {
-  this.pageEvent = e;
-  this.length = e.length;
-  this.pageSize = e.pageSize;
-  this.pageIndex = e.pageIndex;
-  //this.getProjects()
-}*/
 handlePageEvent(e: PageEvent) {
   this.pageEvent = e;
   this.length = e.length;
@@ -180,9 +97,6 @@ handlePageEvent(e: PageEvent) {
   this.pageIndex = e.pageIndex;
   this.getProjects()
 }
-// ngOnInit(): void {
-//   this.getProjects()
-// }
 
 
 }

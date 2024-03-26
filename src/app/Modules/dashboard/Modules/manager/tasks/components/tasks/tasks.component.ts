@@ -6,6 +6,7 @@ import { PageEvent } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteComponent } from 'src/app/Modules/shared/delete/delete.component';
 import { CardTaskComponent } from '../card-task/card-task.component';
+import { DeleteProjectComponent } from '../../../projects/projects/component/delete-project/delete-project.component';
 
 @Component({
   selector: 'app-tasks',
@@ -63,11 +64,11 @@ export class TasksComponent {
   }
 
 
-  openDeleteTaskDialog(taskData:any) {
-    console.log(taskData);
+  /*openDeleteTaskDialog(item:any) {
+    console.log(item);
 
     const dialogRef = this._Dialog.open(DeleteComponent, {
-      data: taskData,
+      data: {isData:item},
     });
 
     dialogRef.afterClosed().subscribe((result) => {
@@ -78,7 +79,38 @@ export class TasksComponent {
         this.deleteTask(result);
       }
     });
+  }*/
+  openDialog(item:any): void {
+    const dialogRef = this._Dialog.open(DeleteProjectComponent, {
+      data: {isData:item},
+    });
+  
+    dialogRef.afterClosed().subscribe((result: any) => {
+      console.log('The dialog was closed',result);
+      console.log(result);
+      if(result){
+       this.deletProject(result)
+      }
+    });
   }
+  
+  deletProject(id:any){
+  this._TasksService.onDeleteTask(id).subscribe({
+    next:(res)=> {
+      console.log(res);
+      
+    },
+    error:(err)=> {
+      console.log(err);
+      
+    }, 
+    complete:()=> {
+      //console.log('complet delete');
+      this.getManagerTasks();
+    },
+  })
+  }
+
 
   openViewTaskDialog(taskData:any) {
     console.log(taskData);
@@ -108,7 +140,7 @@ export class TasksComponent {
     )
     
   }
-  deleteTask(taskId: any) {
+ /* deleteTask(taskId: any) {
     this._TasksService.onGetTaskById(taskId).subscribe({
       next: (res) => {
         console.log(res);
@@ -123,6 +155,6 @@ export class TasksComponent {
       },
     });
   }
-
+*/
  
 }
