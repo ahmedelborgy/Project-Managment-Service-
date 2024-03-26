@@ -46,13 +46,15 @@
           <input matInput formControlName="confirmPassword" placeholder="ConfirmPassword" type="text'">
         </mat-form-field>
     </div>
-  
+
+    <mat-dialog-actions class="float-end">
+      <button mat-button class="second text-white" (click)="onNoClick()">No Thanks</button>
+      <button mat-button class="main text-white">Update</button>
+    </mat-dialog-actions>
   </form>
 </mat-dialog-content>
-<mat-dialog-actions class="float-end">
-  <button mat-button class="second text-white" (click)="onNoClick()">No Thanks</button>
-  <button mat-button [mat-dialog-close]="profileForm.value" class="main text-white" (click)="updateProfileUser()" cdkFocusInitial>Update</button>
-</mat-dialog-actions>
+
+
 
 </section>
         

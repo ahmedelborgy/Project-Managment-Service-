@@ -3,6 +3,7 @@ import { AuthService } from '../../service/auth.service';
 import { ToastrService } from 'ngx-toastr';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { ChangePasswordComponent } from '../change-password/change-password.component';
 import { IProfile } from '../interface/profile';
 @Component({
@@ -14,7 +15,7 @@ export class ProfileComponent implements OnInit{
   imgSrc:any;
   userData:any;
   imageUrl:string='https://upskilling-egypt.com/3003';
-  constructor(private _Toastr:ToastrService,private _AuthService:AuthService,
+  constructor(private _Toastr:ToastrService,private _AuthService:AuthService,private _Router:Router,
     public dialogRef: MatDialogRef<ProfileComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,){}
     onNoClick(): void {
@@ -32,13 +33,14 @@ export class ProfileComponent implements OnInit{
     profileImage:new FormControl(null)
   })
   onSubmit(data:FormGroup){
+    console.log(data.value)
     let myData=new FormData();
     myData.append('userName',data.value.userName),
     myData.append('email',data.value.email),
     myData.append('country',data.value.country),
     myData.append('phoneNumber',data.value.phoneNumber),
     myData.append('confirmPassword',data.value.confirmPassword),
-    myData.append('profileImage',this.imgSrc,this.imgSrc.name)
+    myData.append('profileImage',this.imgSrc,this.imgSrc)
     this._AuthService.profileUser(myData).subscribe({
       next:(res)=>{
         console.log(res)
@@ -48,6 +50,8 @@ export class ProfileComponent implements OnInit{
       },
       complete:()=>{
         this._Toastr.success('Success',"Updated Profile Successfuly")
+         this._Router.navigateByUrl('/dashboard/employee/home')
+       
       }
     })
 
