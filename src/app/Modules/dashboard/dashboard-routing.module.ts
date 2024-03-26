@@ -16,7 +16,7 @@ const routes: Routes = [
       },
       {path:'home', component:HomeComponent},
       {
-        path: 'Employe',
+        path: 'employee',
         canActivate:[EmployeeGuard],
         loadChildren: () =>
           import('./Modules/employe/employe.module').then(

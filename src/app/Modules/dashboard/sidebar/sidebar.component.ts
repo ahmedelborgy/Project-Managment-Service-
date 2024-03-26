@@ -60,13 +60,13 @@ export class SidebarComponent {
     },
     {
       text: 'Projects',
-      link: '/dashboard/Employe/projects/projects-user',
+      link: '/dashboard/employee/projects/projects-user',
       icon: 'fa-solid fa-bars-progress',
       isActive: this.isEmployee()
     },
     {
       text: 'Tasks',
-      link: '/dashboard/Employe/tasks/tasks-user',
+      link: '/dashboard/employee/tasks/tasks-user',
       icon: 'fa-solid fa-list-check',
       isActive: this.isEmployee()
     },
