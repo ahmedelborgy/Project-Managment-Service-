@@ -14,11 +14,6 @@
           expand_more</span></mat-icon>
        </button>
        <mat-menu #menu="matMenu">
-         <button mat-menu-item (click)="myLogout()">
-
-           <mat-icon><span class="material-symbols-outlined primary">logout</span></mat-icon>
-           <span class="primary" >Logout</span>
-         </button>
          <button mat-menu-item (click)=openDialogChangePass()>
           <mat-icon><span class="material-symbols-outlined primary">lock_open</span></mat-icon>
           <span class="primary">
@@ -26,10 +21,16 @@
             </span>
         </button>
         <button mat-menu-item (click)="openDialogProfile()">
-          <mat-icon><span class="material-symbols-outlined primary">lock_open</span></mat-icon>
+          <mat-icon><span class="material-symbols-outlined">
+            account_box
+            </span></mat-icon>
           <span class="primary">
             Profile
             </span>
+        </button>
+        <button mat-menu-item (click)="myLogout()">
+          <mat-icon><span class="material-symbols-outlined primary">logout</span></mat-icon>
+          <span class="primary" >Logout</span>
         </button>
        </mat-menu>
       

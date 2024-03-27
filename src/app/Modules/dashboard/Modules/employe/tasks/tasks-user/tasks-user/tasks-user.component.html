@@ -1,1 +1,34 @@
-<p>tasks-user works!</p>
+<section>
+    <div class="title shadow-sm px-5 bg-header py-4 d-flex justify-content-between">
+        <h3>Task Board</h3>
+    </div>
+    <div class="container-fluid">
+        <div class="row py-5">
+            <div class="col-4">
+              <h2>ToDo</h2>
+              <div class="task mt-2">
+                    <div class="task-item" *ngFor="let item of todo">
+                        <span>{{item.title}}</span>
+                    </div>
+              </div>
+            </div>
+            <div class="col-4">
+                <h2>In Progress</h2>
+                <div class="task mt-2">
+                      <div class="task-item" *ngFor="let item of inPrograss">
+                          <span>{{item.title}}</span>
+                      </div>
+                </div>
+              </div>
+              <div class="col-4">
+                <h2>Done</h2>
+                <div class="task mt-2">
+                      <div class="task-item" *ngFor="let item of Done">
+                          <span>{{item.title}}</span>
+                      </div>
+                   
+                </div>
+              </div>
+        </div>
+    </div>
+</section>
