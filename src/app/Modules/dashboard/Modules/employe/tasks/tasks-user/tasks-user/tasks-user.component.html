@@ -1,34 +1,61 @@
-<section>
+<section class="">
     <div class="title shadow-sm px-5 bg-header py-4 d-flex justify-content-between">
-        <h3>Task Board</h3>
+        <h3>Tasks</h3>
     </div>
+<div cdkDropListGroup>
     <div class="container-fluid">
         <div class="row py-5">
             <div class="col-4">
-              <h2>ToDo</h2>
-              <div class="task mt-2">
-                    <div class="task-item" *ngFor="let item of todo">
-                        <span>{{item.title}}</span>
+                <div class="example-container">
+                    <h2>To do</h2>
+                    <div class="task">
+                        <div
+                        cdkDropList
+                        class="example-list"
+                        [cdkDropListData]="todo"
+                        (cdkDropListDropped)="drop($event)" >
+                          <div class="example-box task-item" *ngFor="let item of todo; track item" cdkDrag >{{item.title}}</div>
+                        
+                      </div>
                     </div>
-              </div>
+                    
+                  </div>
             </div>
             <div class="col-4">
-                <h2>In Progress</h2>
-                <div class="task mt-2">
-                      <div class="task-item" *ngFor="let item of inPrograss">
-                          <span>{{item.title}}</span>
+                <div class="example-container">
+                    <h2>In Prograss</h2>
+                    <div class="task">
+                        <div
+                        cdkDropList
+                        class="example-list"
+                        [cdkDropListData]="inPrograss"
+                    
+                        (cdkDropListDropped)="drop($event)" >
+                          <div class="example-box task-item" *ngFor="let item of inPrograss; track item" cdkDrag>{{item.title}}</div>
+                        
                       </div>
-                </div>
-              </div>
-              <div class="col-4">
-                <h2>Done</h2>
-                <div class="task mt-2">
-                      <div class="task-item" *ngFor="let item of Done">
-                          <span>{{item.title}}</span>
+                    </div>
+                    
+                  </div>
+            </div>
+            <div class="col-4">
+                <div class="example-container">
+                    <h2>Done</h2>
+                    <div class="task">
+                        <div
+                        cdkDropList
+                        class="example-list"
+                        [cdkDropListData]="Done"
+                       
+                        (cdkDropListDropped)="drop($event)" >
+                          <div class="example-box task-item" *ngFor="let item of Done; track item" cdkDrag>{{item.title}}</div>
+                        
                       </div>
-                   
-                </div>
-              </div>
+                    </div>
+                    
+                  </div>
+            </div>
         </div>
     </div>
+</div>
 </section>

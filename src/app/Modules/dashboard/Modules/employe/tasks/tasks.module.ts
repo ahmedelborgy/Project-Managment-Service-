@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { TasksRoutingModule } from './tasks-routing.module';
 import { TasksUserComponent } from './tasks-user/tasks-user/tasks-user.component';
-
+import {DragDropModule} from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [
@@ -11,7 +11,8 @@ import { TasksUserComponent } from './tasks-user/tasks-user/tasks-user.component
   ],
   imports: [
     CommonModule,
-    TasksRoutingModule
+    TasksRoutingModule,
+    DragDropModule
   ]
 })
 export class TasksModule { }

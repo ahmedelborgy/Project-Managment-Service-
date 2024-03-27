@@ -1,5 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { EmployeeTasksService } from '../../../service/employee-tasks.service';
+import {
+  CdkDragDrop,
+  CdkDrag,
+  CdkDropList,
+  CdkDropListGroup,
+  moveItemInArray,
+  transferArrayItem}from '@angular/cdk/drag-drop';
 @Component({
   selector: 'app-tasks-user',
   templateUrl: './tasks-user.component.html',
@@ -33,4 +40,16 @@ export class TasksUserComponent implements OnInit {
     })
   }
 
+  drop(event: CdkDragDrop<string[]>) {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    } else {
+      transferArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex,
+      );
+    }
+  }
 }

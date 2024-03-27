@@ -1,8 +1,8 @@
-import { Task } from '../interface/iemp-project';
+import { Task } from '../interface/employee-project';
 import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { EmpProjectService } from '../service/emp-project.service';
-import { IemployeeProject } from '../interface/iemp-project';
+import { IemployeeProject } from '../interface/employee-project';
 
 @Component({
   selector: 'app-projects-user',
