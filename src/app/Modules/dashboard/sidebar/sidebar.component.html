@@ -1,13 +1,20 @@
-<section class=" vh-100 ps-4 pt-5  ">
-    <ul >
+<section class="overflow-auto vh-100">
+    <div class="py-2">
+        <button class=" style-arrow text-white square" (click)="toggleSidebar()" [ngClass]="isOpened?'togglebtn':'reverse-btn'">
+            <i class="fa-solid fa-arrow-left"></i>
+        </button>
+    </div>
+    <ul [ngClass]="isOpened?'text-start':'text-center'">
         <ng-container *ngFor="let item of Menu">
             
          <li *ngIf="item.isActive">
-        <a [routerLink]="[item.link]" 
-        routerLinkActive="bg-main-transparent"
-        class="text-white">
-            <span><i [class]=item.icon></i></span>
-            <span>{{item.text}}</span>
+        <a   [routerLink]="[item.link]"routerLinkActive="bg-main-transparent"class="text-white">
+            <div class="">
+            <div class="" [ngClass]="isOpened ? 'ps-3' : 'ps-0'">
+                <span><i [class]=item.icon></i></span>
+                <span [ngClass]="isOpened?'d-inline':'d-none'">{{item.text}}</span>
+            </div>
+            </div>
         </a>
        </li>
     </ng-container>

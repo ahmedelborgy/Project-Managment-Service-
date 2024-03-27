@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { AuthService } from '../../auth/service/auth.service';
 import { Router } from '@angular/router';
 interface Menu{
@@ -13,6 +13,12 @@ interface Menu{
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent {
+  @Output()isOpenedSidebar=new EventEmitter<boolean>();
+  isOpened:boolean=true;
+  toggleSidebar(){
+    this.isOpened=!this.isOpened;
+    this.isOpenedSidebar.emit(this.isOpened)
+  }
   constructor(private _AuthService: AuthService, private _Router:Router) {}
   isManager(): boolean {
     console.log(this._AuthService.role);

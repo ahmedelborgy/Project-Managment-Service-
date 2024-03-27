@@ -15,20 +15,7 @@ export class UsersComponent implements OnInit {
 
 pathUskiImg=`https://upskilling-egypt.com:3003/`;
 
-
-
-
-
-
-
-
-
-
-
-
-
   tableUsers:any;
-
   Users:any[]=[];
   length=20;
   pageSize=5;

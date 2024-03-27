@@ -41,12 +41,14 @@
         </mat-form-field>
     </div>
     <div>
-        <mat-form-field appearance="fill" class="w-100">
-          <mat-label>confirmPassword</mat-label>
-          <input matInput formControlName="confirmPassword" placeholder="ConfirmPassword" type="text'">
-        </mat-form-field>
+      <mat-form-field appearance="fill" class="w-100">
+        <mat-label>Confirm Password</mat-label>
+        <input matInput formControlName="confirmNewPassword" placeholder="Confirm Password" [type]="hide ? 'password' : 'text'">
+          <button  color="primary" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon color="primary">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+      </mat-form-field>
     </div>
-
     <mat-dialog-actions class="float-end">
       <button mat-button class="second text-white" (click)="onNoClick()">No Thanks</button>
       <button mat-button class="main text-white">Update</button>

@@ -14,6 +14,7 @@ import { IProfile } from '../interface/profile';
 export class ProfileComponent implements OnInit{
   imgSrc:any;
   userData:any;
+  hide:boolean=true;
   imageUrl:string='https://upskilling-egypt.com/3003';
   constructor(private _Toastr:ToastrService,private _AuthService:AuthService,private _Router:Router,
     public dialogRef: MatDialogRef<ProfileComponent>,
