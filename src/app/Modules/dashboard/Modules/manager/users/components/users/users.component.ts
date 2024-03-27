@@ -12,8 +12,24 @@ import { ViewUserComponent } from '../view-user/view-user.component';
   styleUrls: ['./users.component.scss']
 })
 export class UsersComponent implements OnInit {
+
+pathUskiImg=`https://upskilling-egypt.com:3003/`;
+
+
+
+
+
+
+
+
+
+
+
+
+
   tableUsers:any;
-  Users:any[]=[]
+
+  Users:any[]=[];
   length=20;
   pageSize=5;
   pageIndex=0;
@@ -59,6 +75,8 @@ openDialog(dataItem:any) {
   )
 }
 openDialogView(dataItem:any) {
+  console.log(dataItem);
+  
   const dialogRef = this.dialog.open(ViewUserComponent, {
     data:dataItem
   });
