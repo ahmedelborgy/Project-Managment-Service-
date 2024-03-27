@@ -8,10 +8,17 @@ import { DeleteComponent } from 'src/app/Modules/shared/delete/delete.component'
   styleUrls: ['./view-user.component.scss']
 })
 export class ViewUserComponent {
+  
+pathUskiImg=`https://upskilling-egypt.com:3003/`;
+
+
   constructor(
     public dialogRef: MatDialogRef<ViewUserComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-  ) {}
+  ) {
+    console.log(data);
+    
+  }
 
   onNoClick(): void {
     this.dialogRef.close();
