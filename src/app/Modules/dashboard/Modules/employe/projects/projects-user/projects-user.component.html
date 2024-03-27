@@ -1,1 +1,113 @@
 <p>projects-user works!</p>
+<section>
+    <div class="title shadow-sm px-5 bg-header py-4 d-flex justify-content-between">
+      <h3>Projects Employee</h3>
+     
+  </div>
+
+
+  <section class="tasksTable mt-4 pb-5  mx-5 rounded  d-flex flex-column align-items-center bg-white shadow">
+    <div class="col-3 mt-4 ms-2 me-auto">
+        <div class="input-group px-4   mb-3">
+          <input type="text" [(ngModel)]="searchKey" class="form-control"
+           accordion="form-control mt-2" (keyup.enter)="getAllProject()"
+            placeholder="Search by Title "
+            aria-label="Username" aria-describedby="basic-addon1" >
+            
+         </div>
+      </div>
+     
+    <table class="table table-striped shadow mb-5 bg-body-tertiary rounded-3">
+        <thead>
+            <tr>
+                <th class="col">Title</th>
+                <th class="col ">Description</th>
+                <th class="col">modification Data</th>
+                <th class="col">Num Task</th>
+                <th class="col">Date created</th>
+                <!-- <th class="col">Actions</th> -->
+            </tr>
+        </thead>
+        <tbody *ngIf="tableProjects.length >0">
+      
+            <tr 
+                 *ngFor="let item of tableProjects" >
+              
+
+                <td>{{item.title}}</td>
+                <td class="my-3 ">
+                    <span class="btn bg-success text-white">
+                        {{item.description}}
+
+                    </span>
+                </td>
+                <td>{{item.modificationDate|date:'MMM d, y, h:mm:ss a'}}</td>
+                <td>{{item.task.length}}</td>
+                <td>{{item.creationDate|date:'MMM d, y, h:mm:ss a'}}</td>     
+                </tr> 
+<!--                  
+                <td> 
+                    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                      <mat-icon>more_vert</mat-icon>
+                    </button>
+                    <mat-menu #menu="matMenu">
+                      <button mat-menu-item >
+                          <i class="fa-solid fa-ban p-1"></i>
+                        <span>Edit</span>
+                      </button>
+                      <button mat-menu-item >
+                          <i class="fa-solid fa-eye p-1" ></i>
+                        <span>View</span>
+                      </button>
+                      <button mat-menu-item >
+                        <i class="fa-solid fa-trash p-1"></i>
+                      <span>Delete</span>
+                    </button>
+                    </mat-menu></td> -->
+                  <!-- </tr>  -->
+
+                
+                 
+                  <tr>
+
+
+       
+               
+       
+                </tbody>
+      
+    </table>
+        <tbody >
+            <section *ngIf="tableProjects.length >0" class=" border border-2 m-auto">
+                <mat-paginator [length]="length"
+                [pageSize]="pageSize"
+                [pageIndex]="pageIndex"
+                [pageSizeOptions]="pageSizeOptions"
+                (page)="handlePageEvent($event)"
+                aria-label="Select page">
+                </mat-paginator>
+
+            </section>
+           
+
+
+
+
+    <div *ngIf="tableProjects.length == 0" class="text-center bg-danger w-75 ">
+      <div class="text-center bg-warning m-auto">
+        <img src="../../../../../../../../assets/images/no-data.avif" class="w-100" alt="" />
+        <h4 class="my-3">No Data</h4>
+      </div>
+    </div>
+  
+
+
+
+
+
+
+
+
+
+
+  </section>
