@@ -14,7 +14,9 @@ import { DeleteProjectComponent } from './component/delete-project/delete-projec
 })
 
 export class ProjectsComponent implements OnInit {
-  constructor(public dialog: MatDialog,private _ProjectService:ProjectService, private _Router:Router){
+  constructor(
+    public dialog: MatDialog
+    ,private _ProjectService:ProjectService, private _Router:Router){
   }
  
   tableProjects:any;

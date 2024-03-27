@@ -5,10 +5,12 @@
       <i class="fa-solid fa-plus text-white p-1"></i>Add new Project
     </button>
 </div>
+
 <div class="tasksTable mt-5 mx-5 rounded  bg-white shadow">
 <div class="col-3 mt-4 ms-2">
       <div class="input-group px-4 py-4  mb-3">
-        <input type="text" [(ngModel)]="searchKey" (keyup.enter)="getProjects()" class="form-control mt-2" placeholder="Search by name" aria-label="Username" aria-describedby="basic-addon1" >
+        <input type="text" [(ngModel)]="searchKey" 
+        (keyup.enter)="getProjects()" class="form-control mt-2" placeholder="Search by name" aria-label="Username" aria-describedby="basic-addon1" >
        </div>
     </div>
 <div class="projectsTable">
@@ -70,6 +72,7 @@
       </div>
     </div>
   
+  
     <mat-paginator [length]="length"
 [pageSize]="pageSize"
 [pageIndex]="pageIndex"
@@ -77,3 +80,6 @@
 (page)="handlePageEvent($event)"
 aria-label="Select page">
 </mat-paginator>
+
+</div>
+

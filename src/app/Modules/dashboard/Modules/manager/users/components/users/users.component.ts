@@ -21,7 +21,8 @@ export class UsersComponent implements OnInit {
   pageSizeOptions=[5,10,20];
   pageEvent:PageEvent|any;
   searchKey:string='';
-  constructor(public dialog: MatDialog,private _UserService:UserService,private _HelperService:HelperService){}
+  constructor(public dialog: MatDialog,
+    private _UserService:UserService,private _HelperService:HelperService){}
   ngOnInit(): void {
     this.getAllUsers()
   }
@@ -69,6 +70,7 @@ openDialogView(dataItem:any) {
 }
   )
 }
+
 onViewUser(id:number){
   this._UserService.onViewUser(id).subscribe({
     next:(res)=>{
