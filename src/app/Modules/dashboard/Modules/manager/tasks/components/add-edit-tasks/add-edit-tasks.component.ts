@@ -31,7 +31,7 @@ export class AddEditTasksComponent {
  
    // console.log(_ActivatedRoute.snapshot.params);
     // console.log(_ActivatedRoute.snapshot.params['id']);
-    // this.taskId = _ActivatedRoute.snapshot.params['id'];
+    this.taskId = _ActivatedRoute.snapshot.params['id'];
   }
   ngOnInit(): void {
    
@@ -54,7 +54,7 @@ export class AddEditTasksComponent {
     projectId: new FormControl(null ),
   });
 
-  onSubmitTask(data: FormGroup) {
+ onSubmitTask(data: FormGroup) {
     console.log(data);
     this._TasksService.onAddTask(data.value).subscribe({
       next: (res) => {
@@ -67,62 +67,62 @@ export class AddEditTasksComponent {
       },
     });
   }
-  // onSubmitTask(data: FormGroup) {
-  //   console.log(data.value);
-  //   data.value.id = this.taskId;
-  //   let myData = new FormData();
-  //   myData.append('title', data.value.title);
-  //   myData.append('description', data.value.description);
-  //   myData.append('employeeId', data.value.employeeId);
-  //   myData.append('projectId', data.value.projectId);
+  /* onSubmitTask(data: FormGroup) {
+     console.log(data.value);
+   data.value.id = this.taskId;
+   let myData = new FormData();
+ myData.append('title', data.value.title);
+   myData.append('description', data.value.description);
+    myData.append('employeeId', data.value.employeeId);
+     myData.append('projectId', data.value.projectId);
  
   
-
-//  if (this.taskId) {
-//       myData.append('id', data.value.id);
-//       this.editTask(myData);
-//   }else {
-//        this.addTask(myData);
-//    }
-//  }
-
-
+console.log(myData)
+  if (this.taskId) {
+       myData.append('id', data.value.id);
+       this.editTask(myData);
+   }else {
+        this.addTask(myData);
+    }
+  }
 
 
-  // addTask(data: any) {
-  //   this._TasksService.onAddTask(data).subscribe({
-  //     next: (res) => {
-  //       console.log(res);
-  //       this.projects = res.data;
-  //     },
-  //     error: (err) => {
-  //       console.log(err);
-  //     },
-  //     complete: () => {
-  //       this._Toastr.success('Add Successfully');
-  //       this._Router.navigate(['/dashboard/manager/tasks']);
-  //     },
-  //   });
-  // }
-  // editTask(data: any) {
-  //   data.id = this.taskId;
-  //   this._TasksService.onEditTask(this.taskId, data).subscribe({
-  //     next: (res) => {
-  //       console.log(res);
-  //       this.projects = res.data;
-  //     },
-  //     error: (err) => {
-  //       console.log(err);
-  //     },
-  //     complete: () => {
-  //       this._Toastr.success('Add Successfully');
-  //       this._Router.navigate(['/dashboard/manager/tasks']);
-  //     },
-  //   });
-  // }
 
 
-  getTaskById(id: number) {
+ addTask(data: any) {
+     this._TasksService.onAddTask(data).subscribe({
+       next: (res) => {
+      console.log(res);
+        this.projects = res.data;
+       },
+       error: (err) => {
+        console.log(err);
+      },
+      complete: () => {
+         this._Toastr.success('Add Successfully');
+         this._Router.navigate(['/dashboard/manager/tasks']);
+       },
+     });
+   }
+   editTask(data: any) {
+  data.id = this.taskId;
+    this._TasksService.onEditTask(this.taskId, data).subscribe({
+      next: (res) => {
+       console.log(res);
+        this.projects = res.data;
+       },
+       error: (err) => {
+       console.log(err);
+       },
+       complete: () => {
+       this._Toastr.success('Add Successfully');
+         this._Router.navigate(['/dashboard/manager/tasks']);
+     },
+     });
+   }
+*/
+
+ getTaskById(id: number) {
     this._TasksService.onGetTaskById(id).subscribe({
       next: (res) => {
         console.log(res);
@@ -132,10 +132,10 @@ export class AddEditTasksComponent {
       complete: () => {
      
         this.taskForm.patchValue({
-          // title: this.taskData.title,
-          // description: this.taskData.description,
-          // employeeId: this.taskData.employee.id,
-      
+       /* title: this.taskData.title,
+           description: this.taskData.description,
+           employeeId: this.taskData.employee.id,
+      */
         
         })
 
@@ -144,7 +144,6 @@ export class AddEditTasksComponent {
       })
  
   }
-
 
   getListManagerProjects() {
     this._HelperService.getManagerProjects().subscribe({

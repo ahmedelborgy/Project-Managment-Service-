@@ -6,9 +6,11 @@ import { EmployeComponent } from './employe.component';
 import { SharedModule } from 'src/app/Modules/shared/shared.module';
 
 
+
 @NgModule({
   declarations: [
-    EmployeComponent
+    EmployeComponent,
+ 
   ],
   imports: [
     CommonModule,

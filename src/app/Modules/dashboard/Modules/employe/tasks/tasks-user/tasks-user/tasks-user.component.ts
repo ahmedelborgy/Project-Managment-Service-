@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EmployeeTasksService } from '../../../service/employee-tasks.service';
+import { ToastrService } from 'ngx-toastr';
 import {
   CdkDragDrop,
   CdkDrag,
@@ -13,9 +14,11 @@ import {
   styleUrls: ['./tasks-user.component.scss']
 })
 export class TasksUserComponent implements OnInit {
-  constructor(private _EmployeeTasksService:EmployeeTasksService){}
+  items: any[] = [];
+  constructor(private _EmployeeTasksService:EmployeeTasksService, private _Toastr:ToastrService){}
   ngOnInit(): void {
     this.openAllTasks()
+  
   }
   todo:any[]=[]
   inPrograss:any[]=[]
@@ -41,6 +44,9 @@ export class TasksUserComponent implements OnInit {
   }
 
   drop(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.items, event.previousIndex, event.currentIndex);
+    console.log(event)
+  console.log(event.container.data)
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
@@ -50,6 +56,27 @@ export class TasksUserComponent implements OnInit {
         event.previousIndex,
         event.currentIndex,
       );
+      const taskId = event.container.data[event.currentIndex];
+    
+    // Call changeStatus method to update the status of the moved task
+    this.changeStatusTask(event.container.data[event.currentIndex], taskId);
+   
+    }
+  
+     
+    }
+    changeStatusTask(task:any, taskId:any){
+      this._EmployeeTasksService.changeStatus(task,taskId).subscribe({
+        next:(res)=>{
+          console.log(res)
+        },
+        error:(err)=>{
+          console.log(err)
+        },
+        complete:()=>{
+          this._Toastr.success('Sucsess','Task Moved')
+          this.openAllTasks()
+        }
+      })
     }
   }
-}
