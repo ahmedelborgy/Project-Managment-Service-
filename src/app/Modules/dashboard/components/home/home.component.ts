@@ -1,6 +1,6 @@
 import { HelperService } from 'src/app/core/helper-services/helper.service';
 import { Component, OnInit } from '@angular/core';
-import Chart from 'chart.js/auto';
+import {Chart} from 'chart.js/auto';
 interface IChart{
   toDo:number,
   inProgress:number,
