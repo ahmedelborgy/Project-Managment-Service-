@@ -8,11 +8,13 @@
 <div class="tasksTable mt-5 mx-5 rounded  bg-white shadow">
     <div class="container px-0">
     <div class="row">
-        <div class="col-3 px-4 py-4 ">
-            <div class="input-group mb-3 ">
-              <input type="text"   [(ngModel)]="searchKey" (keyup.enter)="getManagerTasks()"  class="form-control mt-2" placeholder="Search by name" aria-label="Username" aria-describedby="basic-addon1" >
-             </div>
-          </div>
+      <div class="col-5 px-4 py-4">
+        <mat-form-field appearance="fill" class="w-100">
+          <mat-label>Search</mat-label>
+          <input matInput placeholder="" type="text" [(ngModel)]="searchKey" (keyup.enter)="getManagerTasks()">
+        </mat-form-field>
+      </div>
+       
     </div>
  
   <div class="row" *ngIf="managerTasks.length > 0">

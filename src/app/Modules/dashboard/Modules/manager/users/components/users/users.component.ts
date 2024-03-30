@@ -13,8 +13,7 @@ import { ViewUserComponent } from '../view-user/view-user.component';
 })
 export class UsersComponent implements OnInit {
 
-pathUskiImg=`https://upskilling-egypt.com:3003/`;
-
+pathUserImg=`https://upskilling-egypt.com:3003/`;
   tableUsers:any;
   Users:any[]=[];
   length=20;
@@ -23,23 +22,32 @@ pathUskiImg=`https://upskilling-egypt.com:3003/`;
   pageNumber=1;
   pageSizeOptions=[5,10,20];
   pageEvent:PageEvent|any;
-  searchKey:string='';
+  searchName:string='';
+  searchEmail:string='';
+  searchCountry:string='';
   constructor(public dialog: MatDialog,
     private _UserService:UserService,private _HelperService:HelperService){}
   ngOnInit(): void {
     this.getAllUsers()
+   
   }
+  
 getAllUsers(){
   let params={
     pageSize:this.pageSize,
     pageNumber:this.pageNumber,
-    userName:this.searchKey
+    userName:this.searchName,
+    email:this.searchEmail,
+    country:this.searchCountry
+   
   }
+ 
   this._UserService.getUsers(params).subscribe({
     next:(res)=>{
       console.log(res)
       this.tableUsers=res;
       this.Users=res.data
+
     },
     error:(err)=>{
       console.log(err)
@@ -49,6 +57,7 @@ getAllUsers(){
     }
   })
 }
+
 openDialog(dataItem:any) {
   const dialogRef = this.dialog.open(ConfirmUserComponent, {
     data:dataItem

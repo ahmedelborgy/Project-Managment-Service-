@@ -7,12 +7,13 @@
 </div>
 
 <div class="tasksTable mt-5 mx-5 rounded  bg-white shadow">
-<div class="col-3 mt-4 ms-2">
-      <div class="input-group px-4 py-4  mb-3">
-        <input type="text" [(ngModel)]="searchKey" 
-        (keyup.enter)="getProjects()" class="form-control mt-2" placeholder="Search by name" aria-label="Username" aria-describedby="basic-addon1" >
-       </div>
-    </div>
+    <div class="row">
+      <div class="col-5 px-4 py-4">
+        <mat-form-field appearance="fill" class="w-100">
+          <mat-label>Search</mat-label>
+          <input matInput placeholder="" type="text"  [(ngModel)]="searchKey" (keyup.enter)="getProjects()">
+        </mat-form-field>
+      </div>
 <div class="projectsTable">
   <!--<div class="input-group  mt-3 w-50 position-relative ">
     <div class="input-group-append ">
