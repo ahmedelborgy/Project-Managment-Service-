@@ -22,9 +22,9 @@ pathUserImg=`https://upskilling-egypt.com:3003/`;
   pageNumber=1;
   pageSizeOptions=[5,10,20];
   pageEvent:PageEvent|any;
-  searchName:string='';
-  searchEmail:string='';
-  searchCountry:string='';
+  searchKey: string = '';
+  selectedFilter: string = '';
+
   constructor(public dialog: MatDialog,
     private _UserService:UserService,private _HelperService:HelperService){}
   ngOnInit(): void {
@@ -33,15 +33,26 @@ pathUserImg=`https://upskilling-egypt.com:3003/`;
   }
   
 getAllUsers(){
-  let params={
-    pageSize:this.pageSize,
-    pageNumber:this.pageNumber,
-    userName:this.searchName,
-    email:this.searchEmail,
-    country:this.searchCountry
-   
+  let params = {
+    pageSize: this.pageSize,
+    pageNumber: this.pageNumber,
+    userName: '',
+    email: '',
+    country: ''
+  };
+
+  if (this.selectedFilter === 'userName') {
+    params.userName = this.searchKey;
+  } else if (this.selectedFilter === 'email') {
+    params.email = this.searchKey;
+  } else if (this.selectedFilter === 'country') {
+    params.country = this.searchKey;
+  } else {
+    params.userName = this.searchKey;
+    params.email = this.searchKey;
+    params.country = this.searchKey;
   }
- 
+
   this._UserService.getUsers(params).subscribe({
     next:(res)=>{
       console.log(res)
