@@ -14,7 +14,7 @@ import {
   styleUrls: ['./tasks-user.component.scss']
 })
 export class TasksUserComponent implements OnInit {
-  items: any[] = [];
+/*
   constructor(private _EmployeeTasksService:EmployeeTasksService, private _Toastr:ToastrService){}
   ngOnInit(): void {
     this.openAllTasks()
@@ -32,7 +32,7 @@ export class TasksUserComponent implements OnInit {
       pageSize:10,
       pageNumber:1
     }
-   /* this._EmployeeTasksService.getAllTasks(params).subscribe({
+    this._EmployeeTasksService.getAllTasks(params).subscribe({
       next:(res)=>{
         console.log(res)
         this.taskData=res;
@@ -56,40 +56,11 @@ export class TasksUserComponent implements OnInit {
               });
 
       }
-    })*/
-    this._EmployeeTasksService.getAllTasks(params).subscribe({
-      next:(res) => {
-        for (let task of res.data) {
-          if (task.status == 'ToDo') {
-            this.todo.push(task)
-          } else if (task.status == 'InProgress') {
-            this.inPrograss.push(task)
-          } else {
-            this.Done.push(task)
-          }
-        }
-      }
-  })
-}
-
-  drop(event: CdkDragDrop<string[]>) {
-    this._EmployeeTasksService.changeStatus(event.item.data, event.container.id).subscribe({
-      next: (res) => {
-      }
     })
-    if (event.previousContainer === event.container) {
-      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-    } else {
-      transferArrayItem(
-        event.previousContainer.data,
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex,
-      )
-    }
   }
 
-  /*  moveItemInArray(this.items, event.previousIndex, event.currentIndex);
+  drop(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.items, event.previousIndex, event.currentIndex);
     console.log(event)
   console.log(event.container.data)
     if (event.previousContainer === event.container) {
@@ -151,4 +122,115 @@ this._EmployeeTasksService.changeStatus(idTask,statusTask).subscribe({
         }
       })
     }*/
+    tableToDo:any=[];
+     data:any=[];
+     tableInProgress:any=[]
+     tableDone:any=[]
+  
+     constructor(private _EmployeeTasksService:EmployeeTasksService, private _Toastr:ToastrService){}
+  
+
+  ngOnInit(): void {
+    this.getTasks();
+  }
+  
+  getTasks(){
+    let prame={
+      title:'',
+      status:'',
+      pageSize:10,
+      pageNumber:1
+    }
+  this._EmployeeTasksService.getAllTasks(prame).subscribe({
+    next:(res)=> {
+      console.log(res);
+      this.data=res.data;
+      this.tableToDo=this.data.filter((elem:any)=>{
+  
+  
+  return elem?.status=='ToDo';
+      });
+      this.tableInProgress=this.data.filter((elem:any)=>{
+  
+  
+        return elem?.status=='InProgress';
+            });
+            this.tableDone=this.data.filter((elem:any)=>{
+  
+  
+              return elem?.status=='Done';
+                  });
+  
+  
+  
+    },
+    error:(err)=> {
+      console.log(err);
+  
+    },
+    complete:()=> {
+
+      console.log(this.tableToDo);
+      console.log(this.tableInProgress);
+      console.log(this.tableDone);
+  
+  
+  
+    },
+  
+  })
+  
+  }
+  
+    drop(event: CdkDragDrop<string[]>) {
+      console.log(event);
+      console.log(event.container.data);
+  
+  
+      if (event.previousContainer === event.container) {
+        moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+      } else {
+        transferArrayItem(
+          event.previousContainer.data,
+          event.container.data,
+          event.previousIndex,
+          event.currentIndex,
+        );
+        let status = '';
+        if (event.container.id === 'tableToDo') {
+          status = 'ToDo';
+        } else if (event.container.id === 'tableInProgress') {
+          status = 'InProgress';
+        } else if (event.container.id === 'tableDone') {
+          status = 'Done';
+        }
+        console.log(event.container.id );
+        console.log(status);
+        const movedItem: any = event.item.data;
+      console.log('Moved item:', movedItem);
+        this.changStatusTask(movedItem.id,status)
+      }
+    }
+  
+  
+  changStatusTask(idTask:any,statusTask:any){
+  
+  this._EmployeeTasksService.changeStatus(idTask,statusTask).subscribe({
+    next:(res)=>{
+      console.log(res);
+  
+    },
+  
+    error:(err)=>{
+      console.log(err);
+  
+    },
+    complete:()=>{
+      this.getTasks();
+      this._Toastr.success('Sucsess','Task Moved')
+  
+    }
+  })
+  
+  }
   }

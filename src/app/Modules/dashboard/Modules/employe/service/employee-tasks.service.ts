@@ -10,8 +10,8 @@ export class EmployeeTasksService {
   getAllTasks(params:any):Observable<any>{
     return this._HttpClient.get('Task',{params:params})
   }
-  changeStatus(id: number, status: string): Observable<any> {
-    return this._HttpClient.put(`Task/${id}/change-status`, { "status": status })
+  changeStatus(id:number,status:any):Observable<any>{
+    return this._HttpClient.put(`Task/${id}/change-status`,{status})
   }
 }
 
