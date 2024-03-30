@@ -14,7 +14,14 @@ import { MatSelectModule } from '@angular/material/select';
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import { ToastrModule} from 'ngx-toastr';
 import { DeleteComponent } from './delete/delete.component';
-
+import {DragDropModule} from '@angular/cdk/drag-drop';
+import {
+  CdkDragDrop,
+  moveItemInArray,
+  transferArrayItem,
+  CdkDrag,
+  CdkDropList,
+} from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [
@@ -22,6 +29,7 @@ import { DeleteComponent } from './delete/delete.component';
     DeleteComponent
   ],
   imports:[
+    
     CommonModule,
     HttpClientModule,
     MatIconModule,
@@ -35,6 +43,7 @@ import { DeleteComponent } from './delete/delete.component';
     ReactiveFormsModule,
     MatSelectModule,
     NgxDropzoneModule,
+    DragDropModule,
     ToastrModule.forRoot({
      closeButton:true,
       
@@ -54,6 +63,7 @@ import { DeleteComponent } from './delete/delete.component';
     MatSelectModule,
     NgxDropzoneModule,
     ToastrModule,
+    DragDropModule
 ]
 })
 export class SharedModule { }

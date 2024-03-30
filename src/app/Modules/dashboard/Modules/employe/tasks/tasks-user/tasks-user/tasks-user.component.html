@@ -1,1 +1,100 @@
 <p>tasks-user works!</p>
+
+
+<!-- ============================= -->
+
+<div cdkDropListGroup class="taskBoard ">
+
+  <section class="container">
+    <section class="row py-4  d-flex justify-content-evenly ">
+
+
+
+      <section class="col-4   p-3 my-3">
+
+
+  <div class="example-container ">
+    <h2>To do</h2>
+    <div class="task p-3">
+    <div cdkDropList [cdkDropListData]="tableToDo" id="tableToDo"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)" *ngFor="let item of tableToDo" cdkDrag [cdkDragData]="item">
+     
+        <div class="example-box task-item d-flex justify-content-between align-items-center my-3" cdkDrag         [cdkDragData]="item">
+          <span class="fs-3">{{item.title}}</span>
+        
+          <span><i class="fa fa-soild fa-edit fs-3"></i></span>
+
+        </div> 
+      
+    </div>
+</div>
+  </div>
+  </section>
+
+<!-- --------------------- -->
+
+
+
+
+<section class="col-4   p-3 my-3">
+
+
+  <div class="example-container ">
+    <h2>In Progress</h2>
+    <div class="task p-3">
+    <div cdkDropList [cdkDropListData]="tableInProgress" id="tableInProgress"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)" *ngFor="let item of tableInProgress" cdkDrag [cdkDragData]="item">
+     
+        <div class="example-box task-item d-flex justify-content-between align-items-center my-3" cdkDrag         [cdkDragData]="item">
+          <span class="fs-3">{{item.title}}</span>
+        
+          <span><i class="fa fa-soild fa-edit fs-3"></i></span>
+
+        </div> 
+      
+    </div>
+</div>
+  </div>
+  </section>
+
+
+
+<!-- ----------------------- -->
+
+
+<section class="col-4   p-3 my-3">
+
+
+  <div class="example-container ">
+    <h2>Done</h2>
+    <div class="task p-3">
+    <div cdkDropList [cdkDropListData]="tableDone"id="tableDone"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)" *ngFor="let item of tableDone" cdkDrag [cdkDragData]="item">
+     
+        <div class="example-box task-item d-flex justify-content-between align-items-center my-3"cdkDrag 
+        [cdkDragData]="item" >
+          <span class="fs-3">{{item.title}}</span>
+          <span>{{item.id}}</span>
+          <span><i class="fa fa-soild fa-edit fs-3"></i></span>
+
+        </div> 
+      
+    </div>
+</div>
+  </div>
+  </section>
+
+
+
+
+
+
+
+
+
+  </section>
+  </section>
+</div>
