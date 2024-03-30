@@ -1,6 +1,6 @@
 <section>
     <div class="title shadow-sm px-5 bg-header py-4 d-flex justify-content-between">
-      <h3>Projects Employee</h3>
+      <h3>Projects Employee </h3>
   </div>
   <section class="tasksTable mt-4 pb-5  mx-5 rounded  d-flex flex-column align-items-center bg-white shadow">
     <div class="col-3 mt-4 ms-2 me-auto">
@@ -99,8 +99,18 @@
 
 
 
+<!-- -------------------------- -->
+<br><br><br>
+    <section *ngIf="tableProjects.length >0" class=" border border-2 m-auto">
+      <mat-paginator [length]="tableData.totalNumberOfRecords"
+      [pageSize]="pageSize"
+      [pageIndex]="pageIndex"
+      [pageSizeOptions]="pageSizeOptions"
+      (page)="handlePageEvent($event)"
+      aria-label="Select page">
+      </mat-paginator>
 
-
+  </section>
 
 
 

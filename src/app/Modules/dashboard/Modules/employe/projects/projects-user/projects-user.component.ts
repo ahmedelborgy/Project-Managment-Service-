@@ -3,7 +3,13 @@ import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { EmpProjectService } from '../service/emp-project.service';
 import { IemployeeProject } from '../interface/employee-project';
-
+export interface ItableData{
+  pageNumber:number;
+  pageSize:number;
+  totalNumberOfPages:number;
+  totalNumberOfRecords:number;
+  data:IemployeeProject
+}
 @Component({
   selector: 'app-projects-user',
   templateUrl: './projects-user.component.html',
@@ -14,7 +20,8 @@ getProjects() {
 throw new Error('Method not implemented.');
 }
 
-
+tableData:ItableData|any;
+is_totalNumberRecorde:ItableData | undefined;
 tableProjects:IemployeeProject[]=[];
 tableTasks:Task[]=[];
 tasklength:number|any;
@@ -52,6 +59,9 @@ console.log(this.searchKey);
   this._EmpProjectServ.getEmployeeProject(params).subscribe({
 next:(res)=>{
   // console.log(res);
+  this.tableData=res
+  console.log(this.tableData);
+  
   this.tableProjects=res.data;
   console.log(this.tableProjects);
   
@@ -73,7 +83,7 @@ handlePageEvent(e: PageEvent) {
   this.pageEvent = e;
   this.length = e.length;
   this.pageSize = e.pageSize;
-  this.pageIndex = e.pageIndex;
+  this.pageNumber = e.pageIndex;
  this.getAllProject();
 }
 }

@@ -83,4 +83,12 @@ aria-label="Select page">
 </mat-paginator>
 
 </div>
-
+<br><br>
+<!-- last pagination -->
+<mat-paginator [length]="tableProjects?.totalNumberOfRecords"
+[pageSize]="tableProjects?.pageSize"
+[pageIndex]="pageIndex"
+[pageSizeOptions]="pageSizeOptions"
+(page)="handlePageEvent($event)"
+aria-label="Select page">
+</mat-paginator>
