@@ -15,6 +15,10 @@ interface IChart{
 })
 export class HomeComponent implements OnInit {
   userName=localStorage.getItem('userName');
+  userRole=localStorage.getItem('userRole');
+ 
+  
+
   chart:IChart| any = [];
  // isDashboardManagerHomeRoute: boolean;
 
@@ -22,7 +26,8 @@ export class HomeComponent implements OnInit {
    // this.isDashboardManagerHomeRoute = this._Route.snapshot.routeConfig?.path === 'dashboard/employee/home';
   }
   ngOnInit() {
-
+  console.log(this.userRole);
+  
 this._helpServ.getProgressCharts().subscribe({
   next:(res)=>{
 this.chart=res;
