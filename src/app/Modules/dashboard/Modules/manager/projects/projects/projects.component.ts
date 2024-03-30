@@ -42,7 +42,7 @@ export class ProjectsComponent implements OnInit {
       next:(res)=>{
         console.log(res)
         this.tableProjects=res;
-      this.Projects=res.data
+        this.Projects=res.data
       },
       error:(err)=>{
         console.log(err)
