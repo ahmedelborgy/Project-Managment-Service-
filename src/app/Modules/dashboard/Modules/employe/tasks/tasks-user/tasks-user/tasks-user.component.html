@@ -6,23 +6,23 @@
     <div class="container-fluid">
         <div class="row py-5">
             <div class="col-4">
-                <div class="example-container" id="todo">
+                <div class="example-container">
                     <h2>To do</h2>
                     <div class="task">
                         <div
                         cdkDropList
                         class="example-list"
-                        [cdkDropListData]="todo"
-                        (cdkDropListDropped)="drop($event)" >
-                          <div class="example-box task-item" *ngFor="let item of todo; track item" cdkDrag >{{item.title}}</div>
-                        
+                        [cdkDropListData]="todo" 
+                        (cdkDropListDropped)="drop($event)" id="todo">
+                          <div class="example-box task-item" id={{item.id}} [cdkDragData]="item.id" *ngFor="let item of todo; track item" cdkDrag >{{item.title}}</div>
+                          {{item.title}}
                       </div>
                     </div>
                     
                   </div>
             </div>
             <div class="col-4">
-                <div class="example-container" id="inPrograss">
+                <div class="example-container">
                     <h2>In Prograss</h2>
                     <div class="task">
                         <div
@@ -30,8 +30,8 @@
                         class="example-list"
                         [cdkDropListData]="inPrograss"
                     
-                        (cdkDropListDropped)="drop($event)" >
-                          <div class="example-box task-item" *ngFor="let item of inPrograss; track item" cdkDrag>{{item.title}}</div>
+                        (cdkDropListDropped)="drop($event)" id="inPrograss">
+                          <div class="example-box task-item" id={{item.id}} [cdkDragData]="item.id" *ngFor="let item of inPrograss; track item" cdkDrag>{{item.title}}</div>
                         
                       </div>
                     </div>
@@ -39,7 +39,7 @@
                   </div>
             </div>
             <div class="col-4">
-                <div class="example-container" id="done">
+                <div class="example-container">
                     <h2>Done</h2>
                     <div class="task">
                         <div
@@ -47,8 +47,8 @@
                         class="example-list"
                         [cdkDropListData]="Done"
                        
-                        (cdkDropListDropped)="drop($event)" >
-                          <div class="example-box task-item" *ngFor="let item of Done; track item" cdkDrag>{{item.title}}</div>
+                        (cdkDropListDropped)="drop($event)" id="done">
+                          <div class="example-box task-item" id={{item.id}} [cdkDragData]="item.id" *ngFor="let item of Done; track item" cdkDrag>{{item.title}}</div>
                         
                       </div>
                     </div>
