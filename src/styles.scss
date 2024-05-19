@@ -42,7 +42,7 @@ button{
 
   border:#EF9B28;
   // padding: 10px 10px;
-  padding: 0.7rem 45px !important;
+  //padding: 0.7rem 45px !important;
   border-radius:32px !important;
   text-align: center;
   font-size: 25px;
@@ -84,4 +84,10 @@ color: #0E382F !important;
 }
 .icon-color{
   color: rgb(21, 92, 76);
+}
+.btn-main{
+  background-color: #EF9B28;
+    color:white;
+    border-radius:32px !important;
+    padding: 10px 30px;
 }

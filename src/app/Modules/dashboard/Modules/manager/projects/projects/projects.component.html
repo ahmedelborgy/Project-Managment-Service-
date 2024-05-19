@@ -6,7 +6,7 @@
     </button>
 </div>
 
-<div class="tasksTable mt-5 mx-5 rounded  bg-white shadow">
+<div class="tasksTable mt-5 mx-5 rounded  bg-white shadow mb-3">
     <div class="row">
       <div class="col-5 px-4 py-4">
         <mat-form-field appearance="fill" class="w-100">
@@ -52,26 +52,21 @@
                     <mat-menu #menu="matMenu">
                       <button mat-menu-item (click)="editProject(item,'edit')">
                           <i class="fa-solid fa-ban p-1"></i>
-                        <span>Edit</span>
+                        <span class="ps-3 ">Edit</span>
                       </button>
                       <button mat-menu-item (click)="viewProject(item,'view')">
                           <i class="fa-solid fa-eye p-1" ></i>
-                        <span>View</span>
+                        <span class="ps-3 ">View</span>
                       </button>
                       <button mat-menu-item (click)="openDialog(item)">
                         <i class="fa-solid fa-trash p-1"></i>
-                      <span>Delete</span>
+                      <span class="ps-3 ">Delete</span>
                     </button>
                     </mat-menu></td>
                   </tr>
         </tbody>
     </table>
-    <div *ngIf="Projects.length == 0">
-      <div class="text-center">
-        <img src="../../../../../../../../assets/images/no-data.avif" alt="" />
-        <h4 class="my-3">No Data</h4>
-      </div>
-    </div>
+   
   
   
   <!--  <mat-paginator [length]="length"
@@ -85,6 +80,13 @@ aria-label="Select page">
 </div>
 <br><br>-->
 <!-- last pagination -->
+<div *ngIf="Projects.length == 0">
+  <div class="text-center">
+    <img src="../../../../../../../../assets/images/no-data.avif" alt="" />
+    <h4 class="my-3">No Data</h4>
+  </div>
+</div>
+<div  class="my-3 p-2">
 <mat-paginator [length]="tableProjects?.totalNumberOfRecords"
 [pageSize]="tableProjects?.pageSize"
 [pageIndex]="pageIndex"
@@ -92,3 +94,5 @@ aria-label="Select page">
 (page)="handlePageEvent($event)"
 aria-label="Select page">
 </mat-paginator>
+</div>
+

@@ -3,10 +3,15 @@
    <div class="col-6 ">
     <img src="../../../../assets/images/logosvg.svg" height="75px" width="30%"  alt="">
    </div>
-    <div class="col-6 ">
+    <div class="col-6">
       <div class="d-flex  justify-content-end align-items-center">
-        <img src="/../assets/images/profile.png" class="">
-        <h6 class="mt-2 p-3">{{userName}}</h6>
+        <i class="fa-solid fa-bell fs-3 pe-2"></i>
+        <img src="../../../../assets/images/testimonial-4.jpg" class="profileImage">
+        <h6 class="mt-1 ps-3 pt-3">{{userName}}
+          <br>  <p class="fw-light">{{userEmail}}</p>
+        </h6>
+    
+      
        
         <button mat-icon-button [matMenuTriggerFor]="menu"
          aria-label="Example icon-button with a menu">
@@ -16,21 +21,21 @@
        <mat-menu #menu="matMenu">
          <button mat-menu-item (click)=openDialogChangePass()>
           <mat-icon><span class="material-symbols-outlined primary">lock_open</span></mat-icon>
-          <span class="primary">
+          <span class="">
             Change Password
             </span>
         </button>
         <button mat-menu-item (click)="openDialogProfile()">
-          <mat-icon><span class="material-symbols-outlined">
+          <mat-icon><span class="material-symbols-outlined primary">
             account_box
             </span></mat-icon>
-          <span class="primary">
+          <span class="">
             Profile
             </span>
         </button>
         <button mat-menu-item (click)="myLogout()">
           <mat-icon><span class="material-symbols-outlined primary">logout</span></mat-icon>
-          <span class="primary" >Logout</span>
+          <span class="" >Logout</span>
         </button>
        </mat-menu>
       

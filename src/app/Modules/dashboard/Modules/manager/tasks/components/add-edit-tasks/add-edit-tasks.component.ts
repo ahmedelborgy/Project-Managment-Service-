@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { HelperService } from 'src/app/core/helper-services/helper.service';
 import { TasksService } from '../services/tasks.service';
+import { ITask } from '../../models/itask';
 
 @Component({
   selector: 'app-add-edit-tasks',
@@ -12,13 +13,13 @@ import { TasksService } from '../services/tasks.service';
   styleUrls: ['./add-edit-tasks.component.scss']
 })
 export class AddEditTasksComponent {
-
   taskId: number = 0;
-  projects: any[] = [];
-  taskData: any[] = [];
+  projects:  ITask | any;
+  taskData: ITask[]=[];
   users: any[] = [];
   options: string[] = ['One', 'Two', 'Three'];
   filteredOptions: Observable<string[]> | undefined;
+
 
   constructor(
     private _TasksService: TasksService,
@@ -48,96 +49,88 @@ export class AddEditTasksComponent {
   // }
 
    taskForm = new FormGroup({
-    title: new FormControl(null,),
-    description: new FormControl(null ),
-    employeeId: new FormControl(null),
-    projectId: new FormControl(null ),
+    title: new FormControl(''),
+    description: new FormControl(''),
+    employeeId: new FormControl(''),
+    projectId: new FormControl(''),
   });
 
  onSubmitTask(data: FormGroup) {
+  if (this.taskId) {
+    this.editTask(data);
+  } else {
+    this.addTask(data);
+  }
     console.log(data);
+    // this._TasksService.onAddTask(data.value).subscribe({
+    //   next: (res) => {
+    //     console.log(res);
+    //     this.projects = res;
+    //     console.log(this.projects)
+    //   },
+    //   error: () => {},
+    //   complete: () => {
+    //     this._Router.navigate(['/dashboard/manager/tasks']);
+    //     this._Toastr.success('Add Successfully');
+    //   },
+    // });
+  }
+  addTask(data: any) {
     this._TasksService.onAddTask(data.value).subscribe({
       next: (res) => {
-        console.log(res);
-        this.projects = res.data;
+     console.log(res);
+       this.projects = res;
       },
-      error: () => {},
-      complete: () => {
+      error: (err) => {
+       console.log(err);
+     },
+     complete: () => {
+        this._Toastr.success('Add Successfully');
         this._Router.navigate(['/dashboard/manager/tasks']);
       },
     });
   }
-  /* onSubmitTask(data: FormGroup) {
-     console.log(data.value);
-   data.value.id = this.taskId;
-   let myData = new FormData();
- myData.append('title', data.value.title);
-   myData.append('description', data.value.description);
-    myData.append('employeeId', data.value.employeeId);
-     myData.append('projectId', data.value.projectId);
- 
   
-console.log(myData)
-  if (this.taskId) {
-       myData.append('id', data.value.id);
-       this.editTask(myData);
-   }else {
-        this.addTask(myData);
-    }
-  }
-
-
-
-
- addTask(data: any) {
-     this._TasksService.onAddTask(data).subscribe({
-       next: (res) => {
-      console.log(res);
-        this.projects = res.data;
-       },
-       error: (err) => {
-        console.log(err);
-      },
-      complete: () => {
-         this._Toastr.success('Add Successfully');
-         this._Router.navigate(['/dashboard/manager/tasks']);
-       },
-     });
-   }
-   editTask(data: any) {
-  data.id = this.taskId;
-    this._TasksService.onEditTask(this.taskId, data).subscribe({
+editTask(data: any) {
+  data.value.id = this.taskId;
+    this._TasksService.onEditTask(this.taskId, data.value).subscribe({
       next: (res) => {
        console.log(res);
-        this.projects = res.data;
+        this.projects = res;
+        console.log(this.projects)
        },
        error: (err) => {
        console.log(err);
        },
        complete: () => {
-       this._Toastr.success('Add Successfully');
+       this._Toastr.success('updated Successfully');
          this._Router.navigate(['/dashboard/manager/tasks']);
      },
      });
    }
-*/
+ getTaskById(taskId: number) {
 
- getTaskById(id: number) {
-    this._TasksService.onGetTaskById(id).subscribe({
+    this._TasksService.onGetTaskById(taskId).subscribe({
       next: (res) => {
         console.log(res);
-        this.taskData = res.data;
+        this.projects = res;
+        console.log(this.projects)
+        
+        this.taskForm.get('projectId')?.disable();
+          this.taskForm.patchValue({
+            
+            title: this.projects.title,
+            description: this.projects.description,
+             employeeId: this.projects.employeeId,
+             projectId: this.projects.projectId,
+            
+          });
+          //this.taskForm.get('projectId')?.disable();
       },
       error: () => {},
       complete: () => {
      
-        this.taskForm.patchValue({
-       /* title: this.taskData.title,
-           description: this.taskData.description,
-           employeeId: this.taskData.employee.id,
-      */
-        
-        })
+       
 
     
          }
@@ -167,8 +160,4 @@ console.log(myData)
       },
     });
   }
-
-
-
-
 }

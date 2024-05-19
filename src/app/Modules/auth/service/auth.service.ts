@@ -22,6 +22,7 @@ export class AuthService  {
     let decoded:any=jwtDecode(encoded);
     localStorage.setItem('userRole',decoded.userGroup);
     localStorage.setItem('userName',decoded.userName);
+    localStorage.setItem('userEmail',decoded.userEmail)
    this.getRole()
    // console.log(decoded)
   }
