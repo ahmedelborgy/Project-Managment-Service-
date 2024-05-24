@@ -9,7 +9,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  hide = true;
+  hiden:boolean=true;
   constructor(private _Toastr:ToastrService,private _AuthService:AuthService, private _Router:Router){}
   loginForm = new FormGroup({
     email:new FormControl(null,[Validators.required,Validators.email]),

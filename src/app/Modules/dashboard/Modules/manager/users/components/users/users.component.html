@@ -52,11 +52,11 @@
               <mat-menu #menu="matMenu">
                 <button mat-menu-item (click)="openDialog(item)">
                     <i class="fa-solid fa-ban p-1"></i>
-                  <span>{{item.isActivated?'Block':'unBlock'}}</span>
+                  <span class="ps-3 ">{{item.isActivated?'Block':'unBlock'}}</span>
                 </button>
                 <button mat-menu-item (click)="openDialogView(item)">
                     <i class="fa-solid fa-eye p-1"></i>
-                  <span>View</span>
+                  <span class="ps-3 ">View</span>
                 </button>
               </mat-menu></td>
         </tr>
@@ -66,7 +66,7 @@
 <div *ngIf="Users.length == 0">
     <div class="text-center">
       <img src="../../../../../../../../assets/images/no-data.avif" alt="" />
-      <h4 class="my-3">No Data</h4>
+      <h4 class="my-3 pb-2">No Data</h4>
     </div>
   </div>
 

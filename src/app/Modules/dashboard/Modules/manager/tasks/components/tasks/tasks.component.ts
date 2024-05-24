@@ -15,6 +15,7 @@ import { DeleteProjectComponent } from '../../../projects/projects/component/del
 })
 export class TasksComponent {
   searchKey: string='';
+
   tableTask: any;
   managerTasks: any[] = [];
   length = 20;

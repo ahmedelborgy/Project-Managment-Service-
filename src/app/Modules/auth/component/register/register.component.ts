@@ -52,17 +52,31 @@ export class RegisterComponent {
   })
   
   }
-  files: File[] = [];
+//   files: File[] = [];
 
- onSelect(event:any) {
-  this.imgSrc=event.addedFiles[0];
+//  onSelect(event:any) {
+//   this.imgSrc=[event.addedFiles[0]];
+//   console.log(this.imgSrc);
+//   this.files.push(...event.addedFiles);
+// }
+
+//  onRemove(event:any) {
+//   console.log(event);
+//   this.files.splice(this.files.indexOf(event), 1);
+// }
+files: File[] = [];
+//imgSrc: File[] = [];
+
+onSelect(event: any) {
+  this.files = [event.addedFiles[0]];  // Replace files array with the new file
+  this.imgSrc = [event.addedFiles[0]]; // Update imgSrc accordingly
   console.log(this.imgSrc);
-  this.files.push(...event.addedFiles);
 }
 
- onRemove(event:any) {
+onRemove(event: any) {
   console.log(event);
-  this.files.splice(this.files.indexOf(event), 1);
+  this.files = []; // Clear the files array
+  this.imgSrc = []; // Clear the imgSrc array if needed
 }
   openDialog(): void {
     const dialogRef = this.dialog.open(VerifyuserComponent, {

@@ -18,6 +18,7 @@ export class NavbarComponent implements OnInit {
     
   }
   userName=localStorage.getItem('userName');
+  userEmail=localStorage.getItem('userEmail')
  // email=localStorage.getItem('Email')
   myLogout(){
     this._AuthService.logOut();

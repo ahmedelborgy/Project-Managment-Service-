@@ -3,14 +3,26 @@ section{
    background-color:#0E382F;
     ul{
         padding: 10px;
+      
+        
         li{
             padding: 10px;
             list-style: none;
+            &:hover{
+                
+              background-color: #ef9c286f !important;
+              border-radius: 10px;
+              transition: all 1s;
+            }
           
             a{
                 text-decoration: none;
+                font-size: 20px;
+              
+              
                span{
                 margin: 0 6px;
+               
                }
             }
         }
@@ -20,12 +32,14 @@ section{
         //padding: 10px 35px;
         border-radius: 8px;
      
-          background-color: rgba(239, 155, 40, 0.3);    
-          i{
-            color: #EF9B28; 
+          background-color: rgba(239, 155, 40, 0.3) !important;    
+          li{
+           // color: #EF9B28; 
+           background-color: #ef9c286f !important;
+           border-radius: 10px;
           }   
           span{
-            color: #ffffffd0;
+            color: #eab46a99;
           } 
 
     

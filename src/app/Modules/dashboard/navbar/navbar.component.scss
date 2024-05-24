@@ -1,8 +1,22 @@
 section{
-   
+
     background-color: #fff;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.137);
+  
     .logo-style{
         color: #0E382F;
     }
+}
+.primary{
+    color:  #EF9B28;
+}
+.profileImage{
+    width: 50px !important;
+    border-radius: 30px;
+    padding-left: 10px;
+  
+}
+.fa-bell{
+    color:  #EF9B28;
+    
+    border-right: 1px solid  rgba(110, 107, 107, 0.493)!important;
 }

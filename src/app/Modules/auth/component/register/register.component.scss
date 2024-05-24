@@ -7,11 +7,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    position: fixed;
+    overflow: auto;
 }
 .register-form{
-  width:70%;
-  background-color: rgba(49, 89, 81, 0.9);
+  width:75%;
+  //height: 80%;
+  background-color:rgba(49, 74, 89, 0.741);
   border-radius: 16px;
+  margin: 20px 20px;
   //padding: 8px 0px ;
   //margin: 30px 15px;
   h2{
@@ -31,13 +35,17 @@
   span{
     color:  rgba(239, 155, 40, 1);
   }
-
+.logo{
+ width: 150px !important;
+ 
+}
 .picture{
   width:150px;
   height: 150px;
   margin-bottom: 10px !important;
   margin: auto;
   border-radius: 50%;
+  overflow: hidden !important;
 }
 a{
   cursor: pointer;
@@ -46,7 +54,7 @@ a{
 }
 .show-password{
   position: absolute;
-  right: 5px;
-  top:20px;
+  right: 3px;
+  top:30px;
   transform: translateY(-50%);
 }

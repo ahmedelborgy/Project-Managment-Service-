@@ -13,7 +13,7 @@
             </span>
             View All Projects</h3>
 
-            <h3>{{action}} Project</h3>
+            <h5 class="ps-4 pt-2">{{action}} Project</h5>
     </div>
 </section>
 
@@ -67,11 +67,8 @@
 <hr class="my-5">
 <div class="d-flex justify-content-between mt-5 mt-5 ">
     <button routerLink="/dashboard/manager/projects"
-
-   
-
-    type="button" class="main px-3 bg-white text-dark border-black border-1 border">Cancel</button>
-    <button  *ngIf="action !='view'" type="submit" class="main px-3">
+    type="button" class="main p-2 px-3 bg-white text-dark border-black border-1 border">Cancel</button>
+    <button  *ngIf="action !='view'" type="submit" class="main px-3 btn-main">
        {{action}} Project</button>
 
 </div>
