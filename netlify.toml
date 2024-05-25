@@ -1,6 +1,6 @@
 [build]
   command = "ng build"
-  publish = "dist/Project-Managment-Service-"
+  publish = "dist/managment-system"
 [[redirects]]
   from = "/*"
   to = "/index.html"
