@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit {
   }
   ngOnInit() {
   console.log(this.userRole);
-  
+ if(this.userRole=='Manager') 
 this._helpServ.getProgressCharts().subscribe({
   next:(res)=>{
 this.chart=res;
@@ -41,6 +41,8 @@ console.log(err);
 //  console.log("charts ");
   }
 })
+
+if(this.userRole=='Manager') 
 this._helpServ.getUserCharts().subscribe({
   next:(res)=>{
 this.chart=res;
